@@ -9,12 +9,6 @@ import indexRoutes from './routes/index.js';
 // This should be declared under import indexRoutes from "./routes/app.js";
 import institutionRoutes from "./routes/institution.js";
 
-import departmentRoutes from "./routes/departments.js"
-
-import userRoutes from "./routes/user.js"
-
-import courseRoutes from "./routes/course.js"
-
 
 // Create an Express application
 const app = express();
@@ -55,11 +49,6 @@ app.use('/', indexRoutes);
 // This should be declared under app.use("/", indexRoutes);
 app.use("/api/institutions", institutionRoutes);
 
-app.use("/api/departments", departmentRoutes);
-
-app.use("/api/user", userRoutes);
-
-app.use("/api/course", courseRoutes);
 
 
 // Start the server on port 3000
