@@ -10,11 +10,68 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Institution {
-  id          Int          @id @default(autoincrement())
-  name        String
+model Earthquake {
+    id          Int          @id @default(autoincrement())
+    date        DateTime
+    magnitude   Decimal 
+    depth       Decimal
+    duration    Decimal
+    intensity   Int
+    fault-line  String
+    after-shock Int
+    createdAt   DateTime     @default(now())
+    updatedAt   DateTime     @updatedAt
+}
+
+model Tsunami {
+  id            Int          @id @default(autoincrement())
+  region        String
+  date          DateTime
+  size          Decimal
+  duration      DateTime
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
+model BuildingDamage {
+  id                    Int          @id @default(autoincrement())
+  houses_damaged        Int
+  houses_destroyed      Int
+  commerical_damaged    Int
+  commerical_destroyed  Int
+  cost                  Decimal
+  createdAt             DateTime     @default(now())
+  updatedAt             DateTime     @updatedAt
+}
+
+model EEWInfo {
+  id                Int          @id @default(autoincrement())
+  alert_triggered   Bool
+  date              DateTime
+  region            String
+  duration          Decimal
+  accuracy          Decimal
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+}
+
+model Landslide {
+  id           Int          @id @default(autoincrement())
+  smallest     Decimal
+  largest      Decimal
+  region       String
+  number       Int
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+model SensorInfo {
+  sensor_id   Int          @id @default(autoincrement())
+  location    String
   region      String
-  country     String
+  sensor_type String
+  activate    Bool
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
 }
+
