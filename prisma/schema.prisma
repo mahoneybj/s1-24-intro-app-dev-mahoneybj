@@ -11,16 +11,17 @@ datasource db {
 }
 
 model Earthquake {
-    id          Int          @id @default(autoincrement())
-    date        DateTime
-    magnitude   Decimal 
-    depth       Decimal
-    duration    Decimal
-    intensity   Int
-    fault-line  String
-    after-shock Int
-    createdAt   DateTime     @default(now())
-    updatedAt   DateTime     @updatedAt
+    id             Int          @id @default(autoincrement())
+    date           DateTime
+    magnitude      Decimal 
+    depth          Decimal
+    duration       Decimal
+    intensity      Int
+    fault-line     String
+    after_shock_id Int
+    createdAt      DateTime     @default(now())
+    updatedAt      DateTime     @updatedAt
+    earthquake     Earthquake @relation(fields: [after_shock_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model Tsunami {
@@ -29,8 +30,10 @@ model Tsunami {
   date          DateTime
   size          Decimal
   duration      DateTime
+  earthquake_id Int
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
+  earthquake    Earthquake @relation(fields: [earthquake_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model BuildingDamage {
@@ -39,9 +42,11 @@ model BuildingDamage {
   houses_destroyed      Int
   commerical_damaged    Int
   commerical_destroyed  Int
+  earthquake_id Int
   cost                  Decimal
   createdAt             DateTime     @default(now())
   updatedAt             DateTime     @updatedAt
+  earthquake    Earthquake @relation(fields: [earthquake_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model EEWInfo {
@@ -51,8 +56,10 @@ model EEWInfo {
   region            String
   duration          Decimal
   accuracy          Decimal
+  earthquake_id Int
   createdAt         DateTime     @default(now())
   updatedAt         DateTime     @updatedAt
+  earthquake    Earthquake @relation(fields: [earthquake_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model Landslide {
@@ -61,8 +68,10 @@ model Landslide {
   largest      Decimal
   region       String
   number       Int
+  earthquake_id Int
   createdAt    DateTime     @default(now())
   updatedAt    DateTime     @updatedAt
+  earthquake    Earthquake @relation(fields: [earthquake_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model SensorInfo {
@@ -73,5 +82,14 @@ model SensorInfo {
   activate    Bool
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
+}
+
+model SensorEarthJoin {
+  sensor_id     Int
+  earthquake_id Int
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  earthquake    Earthquake @relation(fields: [earthquake_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  sensor        SensorInfo @relation(fields: [sensor_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
