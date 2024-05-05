@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-const createInstitution = async (req, res) => {
+const createEarthquake = async (req, res) => {
     try {
       const contentType = req.headers["content-type"];
       if (!contentType || contentType !== "application/json") {
@@ -11,15 +11,15 @@ const createInstitution = async (req, res) => {
         });
       }
   
-      await prisma.institution.create({
+      await prisma.earthquake.create({
         data: { ...req.body },
       });
   
-      const newInstitutions = await prisma.institution.findMany();
+      const newEarthquakes = await prisma.earthquake.findMany();
   
       return res.status(201).json({
-        msg: "Institution successfully created",
-        data: newInstitutions,
+        msg: "Earthquake successfully created",
+        data: newEarthquakes,
       });
     } catch (err) {
       return res.status(500).json({
@@ -28,19 +28,19 @@ const createInstitution = async (req, res) => {
     }
   };
 
-  const getInstitutions = async (req, res) => {
+  const getEarthquakes = async (req, res) => { //******************************************************************* */
     try {
-      const institutions = await prisma.institution.findMany({
-        include: {
+      const earthquakes = await prisma.earthquake.findMany({
+/*         include: {
             departments: true,
-        },
+        }, */
       });
   
-      if (institutions.length === 0) {
-        return res.status(404).json({ msg: "No institutions found" });
+      if (earthquakes.length === 0) {
+        return res.status(404).json({ msg: "No earthquakes found" });
       }
   
-      return res.json({ data: institutions });
+      return res.json({ data: earthquakes });
     } catch (err) {
       return res.status(500).json({
         msg: err.message,
@@ -48,20 +48,20 @@ const createInstitution = async (req, res) => {
     }
   };
 
-  const getInstitution = async (req, res) => {
+  const getEarthquake = async (req, res) => {
     try {
-      const institution = await prisma.institution.findUnique({
+      const earthquake = await prisma.earthquake.findUnique({
         where: { id: Number(req.params.id) },
       });
   
-      if (!institution) {
+      if (!earthquake) {
         return res
           .status(404)
-          .json({ msg: `No institution with the id: ${req.params.id} found` });
+          .json({ msg: `No earthquake with the id: ${req.params.id} found` });
       }
   
       return res.json({
-        data: institution,
+        data: earthquake,
       });
     } catch (err) {
       return res.status(500).json({
@@ -70,7 +70,7 @@ const createInstitution = async (req, res) => {
     }
   };
 
-  const updateInstitution = async (req, res) => {
+  const updateEarthquake = async (req, res) => {
     try {
       const contentType = req.headers["content-type"];
       if (!contentType || contentType !== "application/json") {
@@ -79,24 +79,24 @@ const createInstitution = async (req, res) => {
         });
       }
   
-      let institution = await prisma.institution.findUnique({
+      let earthquake = await prisma.earthquake.findUnique({
         where: { id: Number(req.params.id) },
       });
   
-      if (!institution) {
+      if (!earthquake) {
         return res
           .status(404)
-          .json({ msg: `No institution with the id: ${req.params.id} found` });
+          .json({ msg: `No earthquake with the id: ${req.params.id} found` });
       }
   
-      institution = await prisma.institution.update({
+      earthquake = await prisma.earthquake.update({
         where: { id: Number(req.params.id) },
         data: { ...req.body },
       });
   
       return res.json({
-        msg: `Institution with the id: ${req.params.id} successfully updated`,
-        data: institution,
+        msg: `Earthquake with the id: ${req.params.id} successfully updated`,
+        data: earthquake,
       });
     } catch (err) {
       return res.status(500).json({
@@ -105,24 +105,24 @@ const createInstitution = async (req, res) => {
     }
   };
 
-  const deleteInstitution = async (req, res) => {
+  const deleteEarthquake = async (req, res) => {
     try {
-      const institution = await prisma.institution.findUnique({
+      const earthquake = await prisma.earthquake.findUnique({
         where: { id: Number(req.params.id) },
       });
   
-      if (!institution) {
+      if (!earthquake) {
         return res
           .status(404)
-          .json({ msg: `No institution with the id: ${req.params.id} found` });
+          .json({ msg: `No earthquake with the id: ${req.params.id} found` });
       }
   
-      await prisma.institution.delete({
+      await prisma.earthquake.delete({
         where: { id: Number(req.params.id) },
       });
   
       return res.json({
-        msg: `Institution with the id: ${req.params.id} successfully deleted`,
+        msg: `Earthquake with the id: ${req.params.id} successfully deleted`,
       });
     } catch (err) {
       return res.status(500).json({
@@ -134,9 +134,9 @@ const createInstitution = async (req, res) => {
 
 
   export {
-    createInstitution,
-    getInstitutions,
-    getInstitution,
-    updateInstitution,
-    deleteInstitution,
+    createEarthquake,
+    getEarthquakes,
+    getEarthquake,
+    updateEarthquake,
+    deleteEarthquake,
   };
