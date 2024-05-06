@@ -2,6 +2,11 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+const paginationDefault = {
+  amount: 25, // The number of items per page
+  page: 1, // The page number
+};
+
 const createEEWInfo = async (req, res) => {
     try {
       const contentType = req.headers["content-type"];
