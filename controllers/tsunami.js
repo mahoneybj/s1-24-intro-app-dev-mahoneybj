@@ -30,11 +30,14 @@ const createTsunami = async (req, res) => {
 
   const getTsunamis = async (req, res) => { //******************************************************************* */
     try {
-      const tsunamis = await prisma.tsunami.findMany({
-/*         include: {
-            departments: true,
-        }, */
-      });
+      const sortBy = req.query.sortBy || "id" || "region" || "date" || "size" || "duration" || "earthquake_id";
+      const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+  
+      const query = {
+        orderBy: {
+          [sortBy]: sortOrder,
+        },
+      };
 
       if (req.query.id || req.query.region || req.query.date || req.query.size || req.query.duration || req.query.earthquake_id) {
         query.where = {
