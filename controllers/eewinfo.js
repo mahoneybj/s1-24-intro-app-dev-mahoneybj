@@ -30,11 +30,14 @@ const createEEWInfo = async (req, res) => {
 
   const getEEWInfos = async (req, res) => { //******************************************************************* */
     try {
-      const eewinfos = await prisma.eewinfo.findMany({
-/*         include: {
-            departments: true,
-        }, */
-      });
+      const sortBy = req.query.sortBy || "id" || "alert_triggered" || "date" || "region" || "duration" || "accuracy" || "earthquake_id";
+      const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+  
+      const query = {
+        orderBy: {
+          [sortBy]: sortOrder,
+        },
+      };
 
       if (req.query.id || req.query.alert_triggered || req.query.date || req.query.region || req.query.duration || req.query.accuracy || req.query.earthquake_id) {
         query.where = {
