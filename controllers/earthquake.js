@@ -30,11 +30,14 @@ const createEarthquake = async (req, res) => {
 
   const getEarthquakes = async (req, res) => { //******************************************************************* */
     try {
-      const earthquakes = await prisma.earthquake.findMany({
-/*         include: {
-            departments: true,
-        }, */
-      });
+      const sortBy = req.query.sortBy || "id" || "date" || "magnitude" || "depth" || "duration" || "intensity" || "fault_line" || "after_shock_id";
+      const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+  
+      const query = {
+        orderBy: {
+          [sortBy]: sortOrder,
+        },
+      };
 
       if (req.query.id || req.query.date || req.query.magnitude || req.query.depth || req.query.duration || req.query.intensity || req.query.fault_line || req.query.after_shock_id ) {
         query.where = {
