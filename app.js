@@ -56,7 +56,6 @@ app.use(express.json()); // To parse the incoming requests with JSON payloads. F
 // Use the routes module
 app.use('/', indexRoutes);
 // This should be declared under app.use("/", indexRoutes);
-app.use("/api/institutions", institutionRoutes);
 
 app.use("/api/building", buildingRoutes);
 
