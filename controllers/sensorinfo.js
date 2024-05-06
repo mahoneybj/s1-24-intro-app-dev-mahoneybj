@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-const createInstitution = async (req, res) => {
+const createSensorinfo = async (req, res) => {
     try {
       const contentType = req.headers["content-type"];
       if (!contentType || contentType !== "application/json") {
@@ -11,15 +11,15 @@ const createInstitution = async (req, res) => {
         });
       }
   
-      await prisma.institution.create({
+      await prisma.sensorinfo.create({
         data: { ...req.body },
       });
   
-      const newInstitutions = await prisma.institution.findMany();
+      const newEarthquakes = await prisma.sensorinfo.findMany();
   
       return res.status(201).json({
-        msg: "Institution successfully created",
-        data: newInstitutions,
+        msg: "Sensor Info successfully created",
+        data: newEarthquakes,
       });
     } catch (err) {
       return res.status(500).json({
@@ -28,19 +28,19 @@ const createInstitution = async (req, res) => {
     }
   };
 
-  const getInstitutions = async (req, res) => {
+  const getSensorinfos = async (req, res) => { //******************************************************************* */
     try {
-      const institutions = await prisma.institution.findMany({
-        include: {
+      const sensorinfos = await prisma.sensorinfo.findMany({
+/*         include: {
             departments: true,
-        },
+        }, */
       });
   
-      if (institutions.length === 0) {
-        return res.status(404).json({ msg: "No institutions found" });
+      if (sensorinfos.length === 0) {
+        return res.status(404).json({ msg: "No sensor infos found" });
       }
   
-      return res.json({ data: institutions });
+      return res.json({ data: sensorinfos });
     } catch (err) {
       return res.status(500).json({
         msg: err.message,
@@ -48,20 +48,20 @@ const createInstitution = async (req, res) => {
     }
   };
 
-  const getInstitution = async (req, res) => {
+  const getSensorinfo = async (req, res) => {
     try {
-      const institution = await prisma.institution.findUnique({
+      const sensorinfo = await prisma.sensorinfo.findUnique({
         where: { id: Number(req.params.id) },
       });
   
-      if (!institution) {
+      if (!sensorinfo) {
         return res
           .status(404)
-          .json({ msg: `No institution with the id: ${req.params.id} found` });
+          .json({ msg: `No sensor info with the id: ${req.params.id} found` });
       }
   
       return res.json({
-        data: institution,
+        data: sensorinfo,
       });
     } catch (err) {
       return res.status(500).json({
@@ -70,7 +70,7 @@ const createInstitution = async (req, res) => {
     }
   };
 
-  const updateInstitution = async (req, res) => {
+  const updateSensorinfo = async (req, res) => {
     try {
       const contentType = req.headers["content-type"];
       if (!contentType || contentType !== "application/json") {
@@ -79,24 +79,24 @@ const createInstitution = async (req, res) => {
         });
       }
   
-      let institution = await prisma.institution.findUnique({
+      let sensorinfo = await prisma.sensorinfo.findUnique({
         where: { id: Number(req.params.id) },
       });
   
-      if (!institution) {
+      if (!sensorinfo) {
         return res
           .status(404)
-          .json({ msg: `No institution with the id: ${req.params.id} found` });
+          .json({ msg: `No sensorinfo with the id: ${req.params.id} found` });
       }
   
-      institution = await prisma.institution.update({
+      sensorinfo = await prisma.sensorinfo.update({
         where: { id: Number(req.params.id) },
         data: { ...req.body },
       });
   
       return res.json({
-        msg: `Institution with the id: ${req.params.id} successfully updated`,
-        data: institution,
+        msg: `Sensor Info with the id: ${req.params.id} successfully updated`,
+        data: sensorinfo,
       });
     } catch (err) {
       return res.status(500).json({
@@ -105,24 +105,24 @@ const createInstitution = async (req, res) => {
     }
   };
 
-  const deleteInstitution = async (req, res) => {
+  const deleteSensorinfo = async (req, res) => {
     try {
-      const institution = await prisma.institution.findUnique({
+      const sensorinfo = await prisma.sensorinfo.findUnique({
         where: { id: Number(req.params.id) },
       });
   
-      if (!institution) {
+      if (!sensorinfo) {
         return res
           .status(404)
-          .json({ msg: `No institution with the id: ${req.params.id} found` });
+          .json({ msg: `No sensorinfo with the id: ${req.params.id} found` });
       }
   
-      await prisma.institution.delete({
+      await prisma.sensorinfo.delete({
         where: { id: Number(req.params.id) },
       });
   
       return res.json({
-        msg: `Institution with the id: ${req.params.id} successfully deleted`,
+        msg: `Sensor Info with the id: ${req.params.id} successfully deleted`,
       });
     } catch (err) {
       return res.status(500).json({
@@ -134,9 +134,9 @@ const createInstitution = async (req, res) => {
 
 
   export {
-    createInstitution,
-    getInstitutions,
-    getInstitution,
-    updateInstitution,
-    deleteInstitution,
+    createSensorinfo,
+    getSensorinfos,
+    getSensorinfo,
+    updateSensorinfo,
+    deleteSensorinfo,
   };
