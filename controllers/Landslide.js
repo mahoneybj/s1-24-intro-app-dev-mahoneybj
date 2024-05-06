@@ -30,11 +30,14 @@ const createLandslide = async (req, res) => {
 
   const getLandslides = async (req, res) => { //******************************************************************* */
     try {
-      const landslides = await prisma.landslide.findMany({
-/*         include: {
-            departments: true,
-        }, */
-      });
+      const sortBy = req.query.sortBy || "id" || "smallest" || "largest" || "region" || "number" || "earthquake_id";
+      const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+  
+      const query = {
+        orderBy: {
+          [sortBy]: sortOrder,
+        },
+      };
 
       if (req.query.id || req.query.smallest || req.query.largest || req.query.region || req.query.number || req.query.earthquake_id) {
         query.where = {
