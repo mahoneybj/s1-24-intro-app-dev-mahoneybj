@@ -30,11 +30,43 @@ const createEarthquake = async (req, res) => {
 
   const getEarthquakes = async (req, res) => { //******************************************************************* */
     try {
-      const earthquakes = await prisma.earthquake.findMany({
-/*         include: {
-            departments: true,
-        }, */
-      });
+      const sortBy = req.query.sortBy || "id" || "date" || "magnitude" || "depth" || "duration" || "intensity" || "fault_line" || "after_shock_id";
+      const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+  
+      const query = {
+        orderBy: {
+          [sortBy]: sortOrder,
+        },
+      };
+
+      if (req.query.id || req.query.date || req.query.magnitude || req.query.depth || req.query.duration || req.query.intensity || req.query.fault_line || req.query.after_shock_id ) {
+        query.where = {
+          id: {
+            equals: req.query.id || undefined,
+          },
+          date: {
+            equals: req.query.date || undefined,
+          },
+          magnitude: {
+            equals: req.query.magnitude || undefined,
+          },
+          depth: {
+            equals: req.query.depth || undefined,
+          },
+          duration: {
+            equals: req.query.duration || undefined,
+          },
+          intensity: {
+            equals: req.query.intensity || undefined,
+          },
+          fault_line: {
+            equals: req.query.fault_line || undefined,
+          },
+          after_shock_id: {
+            equals: req.query.after_shock_id || undefined,
+          },
+        };
+      }
   
       if (earthquakes.length === 0) {
         return res.status(404).json({ msg: "No earthquakes found" });

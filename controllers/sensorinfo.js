@@ -30,11 +30,34 @@ const createSensorinfo = async (req, res) => {
 
   const getSensorinfos = async (req, res) => { //******************************************************************* */
     try {
-      const sensorinfos = await prisma.sensorinfo.findMany({
-/*         include: {
-            departments: true,
-        }, */
-      });
+      const sortBy = req.query.sortBy || "id" || "location" || "region" || "sensor_type" || "activate";
+      const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+  
+      const query = {
+        orderBy: {
+          [sortBy]: sortOrder,
+        },
+      };
+
+      if (req.query.id || req.query.location || req.query.region || req.query.sensor_type || req.query.activate || req.query.earthquake_id) {
+        query.where = {
+          id: {
+            equals: req.query.id || undefined,
+          },
+          location: {
+            equals: req.query.location || undefined,
+          },
+          region: {
+            equals: req.query.region || undefined,
+          },
+          sensor_type: {
+            equals: req.query.sensor_type || undefined,
+          },
+          activate: {
+            equals: req.query.activate || undefined,
+          },
+        };
+      }
   
       if (sensorinfos.length === 0) {
         return res.status(404).json({ msg: "No sensor infos found" });

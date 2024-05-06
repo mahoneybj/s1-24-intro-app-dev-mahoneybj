@@ -30,11 +30,37 @@ const createTsunami = async (req, res) => {
 
   const getTsunamis = async (req, res) => { //******************************************************************* */
     try {
-      const tsunamis = await prisma.tsunami.findMany({
-/*         include: {
-            departments: true,
-        }, */
-      });
+      const sortBy = req.query.sortBy || "id" || "region" || "date" || "size" || "duration" || "earthquake_id";
+      const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+  
+      const query = {
+        orderBy: {
+          [sortBy]: sortOrder,
+        },
+      };
+
+      if (req.query.id || req.query.region || req.query.date || req.query.size || req.query.duration || req.query.earthquake_id) {
+        query.where = {
+          id: {
+            equals: req.query.id || undefined,
+          },
+          region: {
+            equals: req.query.region || undefined,
+          },
+          date: {
+            equals: req.query.date || undefined,
+          },
+          size: {
+            equals: req.query.size || undefined,
+          },
+          duration: {
+            equals: req.query.duration || undefined,
+          },
+          earthquake_id: {
+            equals: res.query.earthquake_id || undefined,
+          },
+        };
+      }
   
       if (tsunamis.length === 0) {
         return res.status(404).json({ msg: "No tsunamis found" });

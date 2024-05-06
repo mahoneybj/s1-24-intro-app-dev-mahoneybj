@@ -7,8 +7,6 @@ import cors from 'cors';
 // Import the index routes module
 import indexRoutes from './routes/index.js';
 // This should be declared under import indexRoutes from "./routes/app.js";
-import institutionRoutes from "./routes/institution.js";
-
 import buildingRoutes from "./routes/building.js";
 
 import earthquakeRoutes from "./routes/earthquake.js";

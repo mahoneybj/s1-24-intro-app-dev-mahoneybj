@@ -30,11 +30,40 @@ const createEEWInfo = async (req, res) => {
 
   const getEEWInfos = async (req, res) => { //******************************************************************* */
     try {
-      const eewinfos = await prisma.eewinfo.findMany({
-/*         include: {
-            departments: true,
-        }, */
-      });
+      const sortBy = req.query.sortBy || "id" || "alert_triggered" || "date" || "region" || "duration" || "accuracy" || "earthquake_id";
+      const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+  
+      const query = {
+        orderBy: {
+          [sortBy]: sortOrder,
+        },
+      };
+
+      if (req.query.id || req.query.alert_triggered || req.query.date || req.query.region || req.query.duration || req.query.accuracy || req.query.earthquake_id) {
+        query.where = {
+          id: {
+            equals: req.query.id || undefined,
+          },
+          alert_triggered: {
+            equals: req.query.alert_triggered || undefined,
+          },
+          date: {
+            equals: req.query.date || undefined,
+          },
+          region: {
+            equals: req.query.region || undefined,
+          },
+          duration: {
+            equals: req.query.duration || undefined,
+          },
+          accuracy: {
+            equals: req.query.accuracy || undefined,
+          },
+          earthquake_id: {
+            equals: req.query.earthquake_id || undefined,
+          },
+        };
+      }
   
       if (eewinfos.length === 0) {
         return res.status(404).json({ msg: "No EEW info found" });
