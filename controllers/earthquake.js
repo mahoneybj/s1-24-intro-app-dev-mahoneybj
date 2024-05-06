@@ -2,6 +2,11 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+const paginationDefault = {
+  amount: 25, // The number of items per page
+  page: 1, // The page number
+};
+
 const createEarthquake = async (req, res) => {
     try {
       const contentType = req.headers["content-type"];
@@ -33,7 +38,12 @@ const createEarthquake = async (req, res) => {
       const sortBy = req.query.sortBy || "id" || "date" || "magnitude" || "depth" || "duration" || "intensity" || "fault_line" || "after_shock_id";
       const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
   
+      const amount = req.query.amount || paginationDefault.amount;
+      const page = req.query.page || paginationDefault.page;
+  
       const query = {
+        take: Number(amount),
+        skip: (Number(page) - 1) * Number(amount),
         orderBy: {
           [sortBy]: sortOrder,
         },

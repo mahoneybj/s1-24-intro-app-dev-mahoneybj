@@ -2,6 +2,11 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+const paginationDefault = {
+  amount: 25, // The number of items per page
+  page: 1, // The page number
+};
+
 const createBuilding = async (req, res) => {
     try {
       const contentType = req.headers["content-type"];
@@ -33,7 +38,12 @@ const createBuilding = async (req, res) => {
       const sortBy = req.query.sortBy || "id" || "houses_damaged" || "houses_destroyed" || "commerical_damaged" || "commerical_destroyed" || "earthquake_id" || "cost";
       const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
   
+      const amount = req.query.amount || paginationDefault.amount;
+      const page = req.query.page || paginationDefault.page;
+  
       const query = {
+        take: Number(amount),
+        skip: (Number(page) - 1) * Number(amount),
         orderBy: {
           [sortBy]: sortOrder,
         },
