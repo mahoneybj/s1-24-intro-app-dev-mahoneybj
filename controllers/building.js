@@ -35,6 +35,32 @@ const createBuilding = async (req, res) => {
             departments: true,
         }, */
       });
+
+      if (req.query.id || req.query.houses_damaged || req.query.houses_destroyed || req.query.commerical_damaged || req.query.commerical_destroyed || req.query.earthquake_id || req.query.cost) {
+        query.where = {
+          id: {
+            equals: req.query.id || undefined,
+          },
+          houses_damaged: {
+            equals: req.query.houses_damaged || undefined,
+          },
+          houses_destroyed: {
+            equals: req.query.houses_destroyed || undefined,
+          },
+          commerical_damaged: {
+            equals: req.query.commerical_damaged || undefined,
+          },
+          commerical_destroyed: {
+            equals: req.query.commerical_destroyed || undefined,
+          },
+          earthquake_id: {
+            equals: req.query.intensity || undefined,
+          },
+          cost: {
+            equals: req.query.fault_line || undefined,
+          },
+        };
+      }
   
       if (buildings.length === 0) {
         return res.status(404).json({ msg: "No building damage logs found" });
