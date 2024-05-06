@@ -35,6 +35,29 @@ const createTsunami = async (req, res) => {
             departments: true,
         }, */
       });
+
+      if (req.query.id || req.query.region || req.query.date || req.query.size || req.query.duration || req.query.earthquake_id) {
+        query.where = {
+          id: {
+            equals: req.query.id || undefined,
+          },
+          region: {
+            equals: req.query.region || undefined,
+          },
+          date: {
+            equals: req.query.date || undefined,
+          },
+          size: {
+            equals: req.query.size || undefined,
+          },
+          duration: {
+            equals: req.query.duration || undefined,
+          },
+          earthquake_id: {
+            equals: res.query.earthquake_id || undefined,
+          },
+        };
+      }
   
       if (tsunamis.length === 0) {
         return res.status(404).json({ msg: "No tsunamis found" });
