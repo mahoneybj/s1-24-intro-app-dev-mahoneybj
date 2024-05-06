@@ -35,6 +35,7 @@ const createEarthquake = async (req, res) => {
             departments: true,
         }, */
       });
+      
   
       if (earthquakes.length === 0) {
         return res.status(404).json({ msg: "No earthquakes found" });
