@@ -35,6 +35,29 @@ const createLandslide = async (req, res) => {
             departments: true,
         }, */
       });
+
+      if (req.query.id || req.query.smallest || req.query.largest || req.query.region || req.query.number || req.query.earthquake_id) {
+        query.where = {
+          id: {
+            equals: req.query.id || undefined,
+          },
+          smallest: {
+            equals: req.query.smallest || undefined,
+          },
+          largest: {
+            equals: req.query.largest || undefined,
+          },
+          region: {
+            equals: req.query.region || undefined,
+          },
+          number: {
+            equals: req.query.number || undefined,
+          },
+          earthquake_id: {
+            equals: req.query.earthquake_id || undefined,
+          },
+        };
+      }
   
       if (landslides.length === 0) {
         return res.status(404).json({ msg: "No landslides found" });
