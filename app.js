@@ -9,6 +9,17 @@ import indexRoutes from './routes/index.js';
 // This should be declared under import indexRoutes from "./routes/app.js";
 import institutionRoutes from "./routes/institution.js";
 
+import buildingRoutes from "./routes/building.js";
+
+import earthquakeRoutes from "./routes/earthquake.js";
+
+import eewinfoRoutes from "./routes/eewinfo.js";
+
+import landslideRoutes from "./routes/landslide.js";
+
+import sensorinfoRoutes from "./routes/sensorinfo.js";
+
+import tsunamiRoutes from "./routes/tsunami.js";
 
 // Create an Express application
 const app = express();
@@ -49,7 +60,17 @@ app.use('/', indexRoutes);
 // This should be declared under app.use("/", indexRoutes);
 app.use("/api/institutions", institutionRoutes);
 
+app.use("/api/building", buildingRoutes);
 
+app.use("/api/earthquake", earthquakeRoutes);
+
+app.use("/api/eewinfo", eewinfoRoutes);
+
+app.use("/api/landslide", landslideRoutes);
+
+app.use("/api/sensorinfo", sensorinfoRoutes);
+
+app.use("/api/tsunami", tsunamiRoutes);
 
 // Start the server on port 3000
 app.listen(3000, () => {
