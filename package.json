@@ -5,7 +5,7 @@
   "main": "formative-1.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx prisma migrate reset --force && mocha --timeout 10000 --exit",
     "dev": "nodemon app.js"
   },
   "keywords": [],
