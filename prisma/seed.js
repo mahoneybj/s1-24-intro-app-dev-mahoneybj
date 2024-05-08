@@ -44,10 +44,21 @@ const main = async () => {
               region: "Otago",
               number: 32
             }
-          }
+          },
         },
       },
+
+      
     });
+    await prisma.SensorInfo.create({
+      data: {
+        location: "Dunedin",
+        region: "Otago",
+        sensor_type: "ADXL-355",
+        activate: true
+      }
+      });
+
   } catch (err) {
     console.error(err);
   } finally {
