@@ -18,7 +18,7 @@ model Earthquake {
   duration        Decimal
   intensity       Int
   fault_line      String
-  after_shock_id  Int
+  after_shock_id  Int?
   createdAt       DateTime          @default(now())
   updatedAt       DateTime          @updatedAt
   Tsunami         Tsunami[]
@@ -33,7 +33,7 @@ model Tsunami {
   region        String
   date          DateTime
   size          Decimal
-  duration      DateTime
+  duration      Decimal
   earthquake_id Int
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @updatedAt

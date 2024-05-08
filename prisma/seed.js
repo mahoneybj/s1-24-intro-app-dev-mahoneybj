@@ -12,40 +12,41 @@ const main = async () => {
         intensity: 5, 
         fault_line: "Alpine fault", 
         after_shock_id: null,
-        tsunami: {
+        Tsunami: {
           create: {
             region: "Otago",
-            size: 5, 
-            duration: 600, 
-            date: new Date(),
-          },
-          buildingDamage: {
-            create: {
-              houses_damaged: 25,
-              houses_destroyed: 6,
-              commerical_damaged: 54,
-              commerical_destroyed: 2,
-              cost: 3.6
-            }
-          },
-          EEWInfo: {
-            create: {
-              alert_triggered: true,
-              date: new Date(),
-              region: "Otago",
-              duration: 56,
-              accuracy: 67.3
-            }
-          },
-          Landslide: {
-            create: {
-              smallest: 2,
-              largest: 54,
-              region: "Otago",
-              number: 32
-            }
-          },
+            size: 5,
+            duration: 600,
+            date: new Date("2024-05-08T04:35:37.158Z")
+          }
         },
+        BuildingDamage: {
+          create: {
+            houses_damaged: 25,
+            houses_destroyed: 6,
+            commerical_damaged: 54,
+            commerical_destroyed: 2,
+            cost: 3.6
+          }
+        },
+        EEWInfo: {
+          create: {
+            alert_triggered: true,
+            date: new Date("2024-05-08T04:35:37.158Z"),
+            region: "Otago",
+            duration: 56,
+            accuracy: 67.3
+          }
+        },
+        Landslide: {
+          create: {
+            smallest: 2,
+            largest: 54,
+            region: "Otago",
+            number: 32
+          }
+        },
+        
       },
 
       
