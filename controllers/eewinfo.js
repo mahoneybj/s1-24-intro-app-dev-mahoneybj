@@ -75,6 +75,8 @@ const createEEWInfo = async (req, res) => {
         };
       }
   
+      const eewinfos = await prisma.eewinfo.findMany(query); // Fetch earthquakes data from the database using Prisma
+
       if (eewinfos.length === 0) {
         return res.status(404).json({ msg: "No EEW info found" });
       }

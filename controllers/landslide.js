@@ -72,6 +72,8 @@ const createLandslide = async (req, res) => {
         };
       }
   
+      const landslides = await prisma.landslide.findMany(query); // Fetch earthquakes data from the database using Prisma
+
       if (landslides.length === 0) {
         return res.status(404).json({ msg: "No landslides found" });
       }

@@ -69,6 +69,8 @@ const createSensorinfo = async (req, res) => {
         };
       }
   
+      const sensorinfos = await prisma.sensorinfo.findMany(query); // Fetch earthquakes data from the database using Prisma
+
       if (sensorinfos.length === 0) {
         return res.status(404).json({ msg: "No sensor infos found" });
       }

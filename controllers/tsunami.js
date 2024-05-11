@@ -72,6 +72,8 @@ const createTsunami = async (req, res) => {
         };
       }
   
+      const tsunamis = await prisma.tsunami.findMany(query); // Fetch earthquakes data from the database using Prisma
+
       if (tsunamis.length === 0) {
         return res.status(404).json({ msg: "No tsunamis found" });
       }

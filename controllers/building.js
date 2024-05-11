@@ -33,7 +33,7 @@ const createBuilding = async (req, res) => {
     }
   };
 
-  const getBuildings = async (req, res) => { //******************************************************************* */
+  const getBuildings = async (req, res) => {
     try {
       const sortBy = req.query.sortBy || "id" || "houses_damaged" || "houses_destroyed" || "commerical_damaged" || "commerical_destroyed" || "earthquake_id" || "cost";
       const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
@@ -48,7 +48,7 @@ const createBuilding = async (req, res) => {
           [sortBy]: sortOrder,
         },
       };
-
+  
       if (req.query.id || req.query.houses_damaged || req.query.houses_destroyed || req.query.commerical_damaged || req.query.commerical_destroyed || req.query.earthquake_id || req.query.cost) {
         query.where = {
           id: {
@@ -67,13 +67,15 @@ const createBuilding = async (req, res) => {
             equals: req.query.commerical_destroyed || undefined,
           },
           earthquake_id: {
-            equals: req.query.intensity || undefined,
+            equals: req.query.earthquake_id || undefined, // Corrected reference to earthquake_id
           },
           cost: {
-            equals: req.query.fault_line || undefined,
+            equals: req.query.cost || undefined, // Corrected reference to cost
           },
         };
       }
+  
+      const buildings = await prisma.building.findMany(query);
   
       if (buildings.length === 0) {
         return res.status(404).json({ msg: "No building damage logs found" });

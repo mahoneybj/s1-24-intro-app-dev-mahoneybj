@@ -7,7 +7,7 @@ CREATE TABLE "Earthquake" (
     "duration" DECIMAL(65,30) NOT NULL,
     "intensity" INTEGER NOT NULL,
     "fault_line" TEXT NOT NULL,
-    "after_shock_id" INTEGER NOT NULL,
+    "after_shock_id" INTEGER,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -20,7 +20,7 @@ CREATE TABLE "Tsunami" (
     "region" TEXT NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
     "size" DECIMAL(65,30) NOT NULL,
-    "duration" TIMESTAMP(3) NOT NULL,
+    "duration" DECIMAL(65,30) NOT NULL,
     "earthquake_id" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
