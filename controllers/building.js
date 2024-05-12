@@ -16,11 +16,11 @@ const createBuilding = async (req, res) => {
         });
       }
   
-      await prisma.building.create({
+      await prisma.BuildingDamage.create({
         data: { ...req.body },
       });
   
-      const newBuildings = await prisma.building.findMany();
+      const newBuildings = await prisma.BuildingDamage.findMany();
   
       return res.status(201).json({
         msg: "Building damage log successfully created",
@@ -75,7 +75,7 @@ const createBuilding = async (req, res) => {
         };
       }
   
-      const buildings = await prisma.building.findMany(query);
+      const buildings = await prisma.BuildingDamage.findMany(query);
   
       if (buildings.length === 0) {
         return res.status(404).json({ msg: "No building damage logs found" });
@@ -91,7 +91,7 @@ const createBuilding = async (req, res) => {
 
   const getBuilding = async (req, res) => {
     try {
-      const building = await prisma.building.findUnique({
+      const building = await prisma.BuildingDamage.findUnique({
         where: { id: Number(req.params.id) },
       });
   
@@ -120,7 +120,7 @@ const createBuilding = async (req, res) => {
         });
       }
   
-      let building = await prisma.building.findUnique({
+      let building = await prisma.BuildingDamage.findUnique({
         where: { id: Number(req.params.id) },
       });
   
@@ -130,7 +130,7 @@ const createBuilding = async (req, res) => {
           .json({ msg: `No building damage logs with the id: ${req.params.id} found` });
       }
   
-      building = await prisma.building.update({
+      building = await prisma.BuildingDamage.update({
         where: { id: Number(req.params.id) },
         data: { ...req.body },
       });
@@ -148,7 +148,7 @@ const createBuilding = async (req, res) => {
 
   const deleteBuilding = async (req, res) => {
     try {
-      const building = await prisma.building.findUnique({
+      const building = await prisma.BuildingDamage.findUnique({
         where: { id: Number(req.params.id) },
       });
   
@@ -158,7 +158,7 @@ const createBuilding = async (req, res) => {
           .json({ msg: `No building damage with the id: ${req.params.id} found` });
       }
   
-      await prisma.building.delete({
+      await prisma.BuildingDamage.delete({
         where: { id: Number(req.params.id) },
       });
   

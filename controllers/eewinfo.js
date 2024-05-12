@@ -16,11 +16,11 @@ const createEEWInfo = async (req, res) => {
         });
       }
   
-      await prisma.eewinfo.create({
+      await prisma.EEWInfo.create({
         data: { ...req.body },
       });
   
-      const newEarthquakes = await prisma.eewinfo.findMany();
+      const newEarthquakes = await prisma.EEWInfo.findMany();
   
       return res.status(201).json({
         msg: "EEW info successfully created",
@@ -75,7 +75,7 @@ const createEEWInfo = async (req, res) => {
         };
       }
   
-      const eewinfos = await prisma.eewinfo.findMany(query); // Fetch earthquakes data from the database using Prisma
+      const eewinfos = await prisma.EEWInfo.findMany(query); // Fetch earthquakes data from the database using Prisma
 
       if (eewinfos.length === 0) {
         return res.status(404).json({ msg: "No EEW info found" });
@@ -91,7 +91,7 @@ const createEEWInfo = async (req, res) => {
 
   const getEEWInfo = async (req, res) => {
     try {
-      const eewinfo = await prisma.eewinfo.findUnique({
+      const eewinfo = await prisma.EEWInfo.findUnique({
         where: { id: Number(req.params.id) },
       });
   
@@ -120,7 +120,7 @@ const createEEWInfo = async (req, res) => {
         });
       }
   
-      let eewinfo = await prisma.eewinfo.findUnique({
+      let eewinfo = await prisma.EEWInfo.findUnique({
         where: { id: Number(req.params.id) },
       });
   
@@ -130,7 +130,7 @@ const createEEWInfo = async (req, res) => {
           .json({ msg: `No EEW info with the id: ${req.params.id} found` });
       }
   
-      eewinfo = await prisma.eewinfo.update({
+      eewinfo = await prisma.EEWInfo.update({
         where: { id: Number(req.params.id) },
         data: { ...req.body },
       });
@@ -148,7 +148,7 @@ const createEEWInfo = async (req, res) => {
 
   const deleteEEWInfo = async (req, res) => {
     try {
-      const eewinfo = await prisma.eewinfo.findUnique({
+      const eewinfo = await prisma.EEWInfo.findUnique({
         where: { id: Number(req.params.id) },
       });
   
@@ -158,7 +158,7 @@ const createEEWInfo = async (req, res) => {
           .json({ msg: `No EEW Info with the id: ${req.params.id} found` });
       }
   
-      await prisma.eewinfo.delete({
+      await prisma.EEWInfo.delete({
         where: { id: Number(req.params.id) },
       });
   

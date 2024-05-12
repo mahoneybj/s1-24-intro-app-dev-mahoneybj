@@ -16,11 +16,11 @@ const createSensorinfo = async (req, res) => {
         });
       }
   
-      await prisma.sensorinfo.create({
+      await prisma.SensorInfo.create({
         data: { ...req.body },
       });
   
-      const newEarthquakes = await prisma.sensorinfo.findMany();
+      const newEarthquakes = await prisma.SensorInfo.findMany();
   
       return res.status(201).json({
         msg: "Sensor Info successfully created",
@@ -69,7 +69,7 @@ const createSensorinfo = async (req, res) => {
         };
       }
   
-      const sensorinfos = await prisma.sensorinfo.findMany(query); // Fetch earthquakes data from the database using Prisma
+      const sensorinfos = await prisma.SensorInfo.findMany(query); // Fetch earthquakes data from the database using Prisma
 
       if (sensorinfos.length === 0) {
         return res.status(404).json({ msg: "No sensor infos found" });
@@ -85,7 +85,7 @@ const createSensorinfo = async (req, res) => {
 
   const getSensorinfo = async (req, res) => {
     try {
-      const sensorinfo = await prisma.sensorinfo.findUnique({
+      const sensorinfo = await prisma.SensorInfo.findUnique({
         where: { id: Number(req.params.id) },
       });
   
@@ -114,7 +114,7 @@ const createSensorinfo = async (req, res) => {
         });
       }
   
-      let sensorinfo = await prisma.sensorinfo.findUnique({
+      let sensorinfo = await prisma.SensorInfo.findUnique({
         where: { id: Number(req.params.id) },
       });
   
@@ -124,7 +124,7 @@ const createSensorinfo = async (req, res) => {
           .json({ msg: `No sensorinfo with the id: ${req.params.id} found` });
       }
   
-      sensorinfo = await prisma.sensorinfo.update({
+      sensorinfo = await prisma.SensorInfo.update({
         where: { id: Number(req.params.id) },
         data: { ...req.body },
       });
@@ -142,7 +142,7 @@ const createSensorinfo = async (req, res) => {
 
   const deleteSensorinfo = async (req, res) => {
     try {
-      const sensorinfo = await prisma.sensorinfo.findUnique({
+      const sensorinfo = await prisma.SensorInfo.findUnique({
         where: { id: Number(req.params.id) },
       });
   
@@ -152,7 +152,7 @@ const createSensorinfo = async (req, res) => {
           .json({ msg: `No sensorinfo with the id: ${req.params.id} found` });
       }
   
-      await prisma.sensorinfo.delete({
+      await prisma.SensorInfo.delete({
         where: { id: Number(req.params.id) },
       });
   
