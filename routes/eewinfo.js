@@ -1,4 +1,5 @@
 import express from "express";
+import { validatePostEEWInfo } from "../middleware/validation.js";
 
 import {
   createEEWInfo,
@@ -10,7 +11,7 @@ import {
 
 const router = express.Router();
 
-router.post("/", createEEWInfo);
+router.post("/", validatePostEEWInfo, createEEWInfo);
 router.get("/", getEEWInfos);
 router.get("/:id", getEEWInfo);
 router.put("/:id", updateEEWinfo);

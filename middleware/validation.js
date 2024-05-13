@@ -143,4 +143,142 @@ const validatePostBuilding = (req, res, next) => {
     
   };
 
-export { validatePostEarthquake, validatePostBuilding, validatePostTsunami };
+  const validatePostEEWInfo = (req, res, next) => {
+    const eewinfoSchema = Joi.object({
+      alert_triggered: Joi.boolean().required().messages({
+        "boolean.base": "Alert triggered should be a boolean",
+        "boolean.empty": "Alert triggered cannot be empty",
+        "any.required": "Alert triggered is required",
+      }),
+      date: Joi.string().required().messages({
+        "datetime.base": "Date should be a valid date",
+        "datetime.empty": "Date cannot be empty",
+        "any.required": "Date is required",
+      }),
+      region: Joi.string().min(1).max(50).required().messages({
+        "string.base": "Region should be a string",
+        "string.empty": "Region cannot be empty",
+        "string.min": "Region should have a minimum length of {#limit}",
+        "string.max": "Region should have a maximum length of {#limit}",
+        "any.required": "Region is required",
+      }),
+      duration: Joi.number().precision(2).min(1).max(300).required().messages({
+          "number.base": "duration should be a decimal",
+          "number.empty": "duration cannot be empty",
+          "number.min": "duration should have a minimum length of {#limit}",
+          "number.max": "duration should have a maximum length of {#limit}",
+          "any.required": "duration is required",
+        }),
+        accuracy: Joi.number().precision(2).min(0.1).max(100).required().messages({
+          "number.base": "Accuracy should be a decimal",
+          "number.empty": "Accuracy cannot be empty",
+          "number.min": "Accuracy should have a minimum length of {#limit}",
+          "number.max": "Accuracy should have a maximum length of {#limit}",
+          "any.required": "Accuracy is required",
+        }),
+        earthquake_id: Joi.number().required().messages({
+          "number.base": "earthquake id should be a int",
+          "number.empty": "earthquake id cannot be empty",
+          "any.required": "earthquake id is required",
+        }),
+    });
+  
+    const { error } = eewinfoSchema.validate(req.body);
+  
+    if (error) {
+      return res.status(400).json({
+        msg: error.details[0].message,
+      });
+    }
+  
+    next();
+  
+    
+  };
+
+  const validatePostLandslide = (req, res, next) => {
+    const landslideSchema = Joi.object({
+      smallest: Joi.number().precision(1).required().messages({
+        "number.base": "Smallest landslide should be a decimal",
+        "number.empty": "Smallest landslide cannot be empty",
+        "any.required": "Smallest landslide is required",
+      }),
+      largest: Joi.number().precision(1).required().messages({
+        "number.base": "Largest landslide should be a decimal",
+        "number.empty": "Largest landslide cannot be empty",
+        "any.required": "Largest landslide is required",
+      }),
+      region: Joi.string().min(1).max(50).required().messages({
+        "string.base": "Region should be a string",
+        "string.empty": "Region cannot be empty",
+        "string.min": "Region should have a minimum length of {#limit}",
+        "string.max": "Region should have a maximum length of {#limit}",
+        "any.required": "Region is required",
+      }),
+      number: Joi.number().min(1).max(300).required().messages({
+          "number.base": "Number of landslides should be a int",
+          "number.empty": "Number of landslides cannot be empty",
+          "number.min": "Number of landslides should have a minimum length of {#limit}",
+          "number.max": "Number of landslides should have a maximum length of {#limit}",
+          "any.required": "Number of landslides is required",
+        }),
+        earthquake_id: Joi.number().required().messages({
+          "number.base": "earthquake id should be a int",
+          "number.empty": "earthquake id cannot be empty",
+          "any.required": "earthquake id is required",
+        }),
+    });
+  
+    const { error } = landslideSchema.validate(req.body);
+  
+    if (error) {
+      return res.status(400).json({
+        msg: error.details[0].message,
+      });
+    }
+  
+    next();
+  
+    
+  };
+
+  const validatePostSensorInfo = (req, res, next) => {
+    const sensorinfoSchema = Joi.object({
+      location: Joi.string().required().messages({
+        "string.base": "Location should be a string",
+        "string.empty": "Location cannot be empty",
+        "any.required": "Location is required",
+      }),
+      region: Joi.string().precision(1).required().messages({
+        "string.base": "Region should be a string",
+        "string.empty": "Region cannot be empty",
+        "any.required": "Region is required",
+      }),
+      sensor_type: Joi.string().min(1).max(50).required().messages({
+        "string.base": "Sensor type should be a string",
+        "string.empty": "Sensor type cannot be empty",
+        "string.min": "Sensor type should have a minimum length of {#limit}",
+        "string.max": "Sensor type should have a maximum length of {#limit}",
+        "any.required": "Sensor type is required",
+      }),
+      activate: Joi.boolean().required().messages({
+        "boolean.base": "Active status should be a boolean",
+        "boolean.empty": "Active status cannot be empty",
+        "any.required": "Active status is required",
+      }),
+    });
+  
+    const { error } = sensorinfoSchema.validate(req.body);
+  
+    if (error) {
+      return res.status(400).json({
+        msg: error.details[0].message,
+      });
+    }
+  
+    next();
+  
+    
+  };
+
+export { validatePostEarthquake, validatePostBuilding, validatePostTsunami, validatePostEEWInfo, validatePostLandslide, validatePostSensorInfo };
