@@ -183,7 +183,7 @@ const validatePostBuilding = (req, res, next) => {
         }),
     });
   
-    const { error } = eewinfoSchemaSchema.validate(req.body);
+    const { error } = eewinfoSchema.validate(req.body);
   
     if (error) {
       return res.status(400).json({
@@ -229,7 +229,7 @@ const validatePostBuilding = (req, res, next) => {
         }),
     });
   
-    const { error } = landslideSchemaSchema.validate(req.body);
+    const { error } = landslideSchema.validate(req.body);
   
     if (error) {
       return res.status(400).json({
@@ -242,4 +242,43 @@ const validatePostBuilding = (req, res, next) => {
     
   };
 
-export { validatePostEarthquake, validatePostBuilding, validatePostTsunami, validatePostEEWInfo, validatePostLandslide };
+  const validatePostSensorInfo = (req, res, next) => {
+    const sensorinfoSchema = Joi.object({
+      location: Joi.string().required().messages({
+        "string.base": "Location should be a string",
+        "string.empty": "Location cannot be empty",
+        "any.required": "Location is required",
+      }),
+      region: Joi.string().precision(1).required().messages({
+        "string.base": "Region should be a string",
+        "string.empty": "Region cannot be empty",
+        "any.required": "Region is required",
+      }),
+      sensor_type: Joi.string().min(1).max(50).required().messages({
+        "string.base": "Sensor type should be a string",
+        "string.empty": "Sensor type cannot be empty",
+        "string.min": "Sensor type should have a minimum length of {#limit}",
+        "string.max": "Sensor type should have a maximum length of {#limit}",
+        "any.required": "Sensor type is required",
+      }),
+      activate: Joi.boolean().required().messages({
+        "boolean.base": "Active status should be a boolean",
+        "boolean.empty": "Active status cannot be empty",
+        "any.required": "Active status is required",
+      }),
+    });
+  
+    const { error } = sensorinfoSchema.validate(req.body);
+  
+    if (error) {
+      return res.status(400).json({
+        msg: error.details[0].message,
+      });
+    }
+  
+    next();
+  
+    
+  };
+
+export { validatePostEarthquake, validatePostBuilding, validatePostTsunami, validatePostEEWInfo, validatePostLandslide, validatePostSensorInfo };

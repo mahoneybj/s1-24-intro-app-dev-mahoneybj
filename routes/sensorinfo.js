@@ -1,4 +1,5 @@
 import express from "express";
+import { validatePostSensorInfo } from "../middleware/validation.js";
 
 import {
   createSensorinfo,
@@ -10,7 +11,7 @@ import {
 
 const router = express.Router();
 
-router.post("/", createSensorinfo);
+router.post("/", validatePostSensorInfo, createSensorinfo);
 router.get("/", getSensorinfos);
 router.get("/:id", getSensorinfo);
 router.put("/:id", updateSensorinfo);
