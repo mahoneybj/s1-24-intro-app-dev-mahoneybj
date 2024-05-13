@@ -1,4 +1,5 @@
 import express from "express";
+import { validatePostLandslide } from "../middleware/validation.js";
 
 import {
   createLandslide,
@@ -10,7 +11,7 @@ import {
 
 const router = express.Router();
 
-router.post("/", createLandslide);
+router.post("/", validatePostLandslide, createLandslide);
 router.get("/", getLandslides);
 router.get("/:id", getLandslide);
 router.put("/:id", updateLandslide);

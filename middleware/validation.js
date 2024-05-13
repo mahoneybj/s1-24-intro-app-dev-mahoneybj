@@ -196,4 +196,50 @@ const validatePostBuilding = (req, res, next) => {
     
   };
 
-export { validatePostEarthquake, validatePostBuilding, validatePostTsunami, validatePostEEWInfo };
+  const validatePostLandslide = (req, res, next) => {
+    const landslideSchema = Joi.object({
+      smallest: Joi.number().precision(1).required().messages({
+        "number.base": "Smallest landslide should be a decimal",
+        "number.empty": "Smallest landslide cannot be empty",
+        "any.required": "Smallest landslide is required",
+      }),
+      largest: Joi.number().precision(1).required().messages({
+        "number.base": "Largest landslide should be a decimal",
+        "number.empty": "Largest landslide cannot be empty",
+        "any.required": "Largest landslide is required",
+      }),
+      region: Joi.string().min(1).max(50).required().messages({
+        "string.base": "Region should be a string",
+        "string.empty": "Region cannot be empty",
+        "string.min": "Region should have a minimum length of {#limit}",
+        "string.max": "Region should have a maximum length of {#limit}",
+        "any.required": "Region is required",
+      }),
+      number: Joi.number().min(1).max(300).required().messages({
+          "number.base": "Number of landslides should be a int",
+          "number.empty": "Number of landslides cannot be empty",
+          "number.min": "Number of landslides should have a minimum length of {#limit}",
+          "number.max": "Number of landslides should have a maximum length of {#limit}",
+          "any.required": "Number of landslides is required",
+        }),
+        earthquake_id: Joi.number().required().messages({
+          "number.base": "earthquake id should be a int",
+          "number.empty": "earthquake id cannot be empty",
+          "any.required": "earthquake id is required",
+        }),
+    });
+  
+    const { error } = landslideSchemaSchema.validate(req.body);
+  
+    if (error) {
+      return res.status(400).json({
+        msg: error.details[0].message,
+      });
+    }
+  
+    next();
+  
+    
+  };
+
+export { validatePostEarthquake, validatePostBuilding, validatePostTsunami, validatePostEEWInfo, validatePostLandslide };
