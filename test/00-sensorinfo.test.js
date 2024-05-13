@@ -36,7 +36,7 @@ describe("SensorInfo", () => {
         .end((req, res) => {
           chai.expect(res.status).to.be.equal(201);
           chai.expect(res.body).to.be.a("object");
-          chai.expect(res.body.msg).to.be.equal("SensorInfo successfully created");
+          chai.expect(res.body.msg).to.be.equal("Sensor Info successfully created");
           done();
         });
     });

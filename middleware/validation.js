@@ -249,7 +249,7 @@ const validatePostBuilding = (req, res, next) => {
         "string.empty": "Location cannot be empty",
         "any.required": "Location is required",
       }),
-      region: Joi.string().precision(1).required().messages({
+      region: Joi.string().required().messages({
         "string.base": "Region should be a string",
         "string.empty": "Region cannot be empty",
         "any.required": "Region is required",
