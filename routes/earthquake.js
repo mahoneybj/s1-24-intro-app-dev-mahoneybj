@@ -1,4 +1,6 @@
 import express from "express";
+import { validatePostEarthquake } from "../middleware/validation.js";
+
 
 import {
   createEarthquake,
@@ -10,7 +12,7 @@ import {
 
 const router = express.Router();
 
-router.post("/", createEarthquake);
+router.post("/", validatePostEarthquake, createEarthquake);
 router.get("/", getEarthquakes);
 router.get("/:id", getEarthquake);
 router.put("/:id", updateEarthquake);

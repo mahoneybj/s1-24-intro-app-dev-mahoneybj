@@ -13,15 +13,16 @@ describe("Earthquakes", () => {
       .post("/api/earthquakes")
       .send({
         date: "2024-05-09T12:00:00Z", // Example date
-        magnitude: "7.5",
-        depth: "10.5",
-        duration: "60.5",
+        magnitude: "Not a number",
+        depth: 10.5,
+        duration: 60.5,
         intensity: 8,
         fault_line: "San Andreas Fault",
         after_shock_id: 0,
       })
       .end((req, res) => {
-        chai.expect(res.body.msg).to.be.equal("Magnitude should be a decimal");
+        console.log(res)
+        chai.expect(res.body.msg).to.be.equal("magnitude should be a decimal");
         done();
       });
   });
@@ -77,17 +78,17 @@ describe("Earthquakes", () => {
   it("should not update earthquake by id", (done) => {
     chai
       .request(app)
-      .put("/api/earthquakes/1")
+      .put("/api/earthquakes/3")
       .send({
-        magnitude: "8.0",
-        depth: "15.0",
-        duration: "70.0",
-        intensity: 9,
+        magnitude: 8.0,
+        depth: 15.0,
+        duration: 70.0,
+        intensity: 6,
         fault_line: "San Andreas Fault",
         after_shock_id: 0,
       })
       .end((req, res) => {
-        chai.expect(res.body.msg).to.be.equal("Earthquake with id: 1 not found");
+        chai.expect(res.body.msg).to.be.equal("Earthquake with id: 3 not found");
         done();
       });
   });

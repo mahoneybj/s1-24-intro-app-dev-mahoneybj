@@ -1,4 +1,6 @@
 import express from "express";
+import { validatePostBuilding } from "../middleware/validation.js";
+
 
 import {
   createBuilding,
@@ -10,7 +12,7 @@ import {
 
 const router = express.Router();
 
-router.post("/", createBuilding);
+router.post("/", validatePostBuilding, createBuilding);
 router.get("/", getBuildings);
 router.get("/:id", getBuilding);
 router.put("/:id", updateBuilding);

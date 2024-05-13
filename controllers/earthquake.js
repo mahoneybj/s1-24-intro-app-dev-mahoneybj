@@ -129,7 +129,7 @@ const createEarthquake = async (req, res) => {
       if (!earthquake) {
         return res
           .status(404)
-          .json({ msg: `No earthquake with the id: ${req.params.id} found` });
+          .json({ msg: `Earthquake with id: ${req.params.id} not found` });
       }
   
       earthquake = await prisma.earthquake.update({

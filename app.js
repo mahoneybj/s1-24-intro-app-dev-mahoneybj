@@ -1,11 +1,11 @@
 // Import the Express module
-import express from 'express';
+import express from "express";
 
 // Import the CORS module
-import cors from 'cors';
+import cors from "cors";
 
 // Import the index routes module
-import indexRoutes from './routes/index.js';
+import indexRoutes from "./routes/index.js";
 // This should be declared under import indexRoutes from "./routes/app.js";
 import buildingRoutes from "./routes/building.js";
 
@@ -36,14 +36,11 @@ const setContentSecurityPolicy = (req, res, next) => {
   next();
 };
 
-
 // This should be declared under app.use(cors());
 app.use(setXContentTypeOptions);
 // This should be declared under app.use(setXContentTypeOptions);
 app.use(setXFrameOptions);
 app.use(setContentSecurityPolicy);
-
-
 
 // Use the CORS module
 app.use(cors());
@@ -52,26 +49,25 @@ app.use(express.urlencoded({ extended: false })); // To parse the incoming reque
 // This should be declared under app.use(urlencoded({ extended: false }));
 app.use(express.json()); // To parse the incoming requests with JSON payloads. For example, REST API requests
 
-
 // Use the routes module
-app.use('/', indexRoutes);
+app.use("/", indexRoutes);
 // This should be declared under app.use("/", indexRoutes);
 
-app.use("/api/building", buildingRoutes);
+app.use("/api/buildings", buildingRoutes);
 
-app.use("/api/earthquake", earthquakeRoutes);
+app.use("/api/earthquakes", earthquakeRoutes);
 
 app.use("/api/eewinfo", eewinfoRoutes);
 
-app.use("/api/landslide", landslideRoutes);
+app.use("/api/landslides", landslideRoutes);
 
 app.use("/api/sensorinfo", sensorinfoRoutes);
 
-app.use("/api/tsunami", tsunamiRoutes);
+app.use("/api/tsunamis", tsunamiRoutes);
 
 // Start the server on port 3000
 app.listen(3000, () => {
-  console.log('Server is listening on port 3000.');
+  console.log("Server is listening on port 3000.");
 });
 
 // Export the Express application. Other modules may use it. For example, API testing

@@ -1,4 +1,5 @@
 import express from "express";
+import { validatePostTsunami } from "../middleware/validation.js";
 
 import {
   createTsunami,
@@ -10,7 +11,7 @@ import {
 
 const router = express.Router();
 
-router.post("/", createTsunami);
+router.post("/", validatePostTsunami, createTsunami);
 router.get("/", getTsunamis);
 router.get("/:id", getTsunami);
 router.put("/:id", updateTsunami);
