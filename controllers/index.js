@@ -1,8 +1,15 @@
-// Create a GET route
-const get = (req, res) => { 
-  res.send('Endpoints:<br>/api/building/<br>/api/earthquake/<br>/api/eewinfo/<br>/api/landslide<br>/api/sensorinfo/<br>/api/tsunami/');
+const endpoints = [
+  '/api/building/',
+  '/api/earthquake/',
+  '/api/eewinfo/',
+  '/api/landslide/',
+  '/api/sensorinfo/',
+  '/api/tsunami/'
+];
 
-  };
-  
-  // Export the get function
-  export { get };
+const get = (req, res) => {
+  res.send( {data: endpoints} );
+};
+
+// Export the get function
+export { get };
