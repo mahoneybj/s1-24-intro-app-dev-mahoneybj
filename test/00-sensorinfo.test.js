@@ -7,7 +7,7 @@ import app from "../app.js";
 chai.use(chaiHttp);
 
 describe("SensorInfo", () => {
-    it("should not create SensorInfo", (done) => {
+    it("should not create SensorInfo (Validation)", (done) => {
       chai
         .request(app)
         .post("/api/sensorinfo")
@@ -78,6 +78,22 @@ describe("SensorInfo", () => {
         })
         .end((req, res) => {
           chai.expect(res.body.msg).to.be.equal("No sensorinfo with the id: 3 found");
+          done();
+        });
+    });
+
+    it("should not update SensorInfo by id (Validation)", (done) => {
+      chai
+        .request(app)
+        .put("/api/sensorinfo/3")
+        .send({
+          location: 123,
+          region: "Updated Region",
+          sensor_type: "Updated Sensor",
+          activate: false,
+        })
+        .end((req, res) => {
+          chai.expect(res.body.msg).to.be.equal("Location should be a string");
           done();
         });
     });

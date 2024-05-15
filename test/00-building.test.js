@@ -7,7 +7,7 @@ import app from "../app.js";
 chai.use(chaiHttp);
 
 describe("Building Damage", () => {
-    it("should not create building damage", (done) => {
+    it("should not create building damage (Validation)", (done) => {
       chai
         .request(app)
         .post("/api/buildings")

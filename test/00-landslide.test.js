@@ -7,7 +7,7 @@ import app from "../app.js";
 chai.use(chaiHttp);
 
 describe("Landslide", () => {
-    it("should not create Landslide", (done) => {
+    it("should not create Landslide (Validation)", (done) => {
       chai
         .request(app)
         .post("/api/landslides")
@@ -81,6 +81,23 @@ describe("Landslide", () => {
         })
         .end((req, res) => {
           chai.expect(res.body.msg).to.be.equal("No landslide with the id: 3 found");
+          done();
+        });
+    });
+
+    it("should not update Landslide by id (Validation)", (done) => {
+      chai
+        .request(app)
+        .put("/api/landslides/2")
+        .send({
+          smallest: 11.5,
+          largest: "Not an int",
+          region: "Updated Region",
+          number: 8,
+          earthquake_id: 2,
+        })
+        .end((req, res) => {
+          chai.expect(res.body.msg).to.be.equal("Largest landslide should be a decimal");
           done();
         });
     });
