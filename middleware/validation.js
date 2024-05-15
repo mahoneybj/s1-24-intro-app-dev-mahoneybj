@@ -2,8 +2,8 @@ import Joi from "joi";
 
 const validatePostEarthquake = (req, res, next) => {
   const earthquakeSchema = Joi.object({
-    date: Joi.date().required().messages({
-      "date.base": "date should be a timestamp",
+    date: Joi.date().iso().required().messages({
+      "date.base": "date should be a date",
       "date.empty": "date cannot be empty",
       "any.required": "date is required",
     }),
@@ -106,11 +106,11 @@ const validatePostBuilding = (req, res, next) => {
   const validatePostTsunami = (req, res, next) => {
     const tsunamiSchema = Joi.object({
         region: Joi.string().required().messages({
-        "number.base": "region should be a string",
-        "number.empty": "region cannot be empty",
+        "string.base": "region should be a string",
+        "string.empty": "region cannot be empty",
         "any.required": "region is required",
       }),
-      date: Joi.date().messages({
+      date: Joi.date().iso().messages({
         "date.base": "date should be a date",
         "date.empty": "date cannot be empty",
       }),
@@ -150,7 +150,7 @@ const validatePostBuilding = (req, res, next) => {
         "boolean.empty": "Alert triggered cannot be empty",
         "any.required": "Alert triggered is required",
       }),
-      date: Joi.date().required().messages({
+      date: Joi.date().iso().required().messages({
         "date.base": "Date should be a valid date",
         "date.empty": "Date cannot be empty",
         "any.required": "Date is required",

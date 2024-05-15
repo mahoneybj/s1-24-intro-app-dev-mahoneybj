@@ -13,7 +13,7 @@ describe("Tsunami", () => {
         .post("/api/tsunamis")
         .send({
           region: "Test Region",
-          date: "Not a valid date",
+          date: 555,
           size: 8.5,
           duration: 60.5,
           earthquake_id: 1,
@@ -90,14 +90,14 @@ describe("Tsunami", () => {
         .request(app)
         .put("/api/tsunamis/2")
         .send({
-          region: "Updated Region",
-          date: 14032004,
+          region: 1111,
+          date: "2024-05-09T12:00:00Z",
           size: 9.0,
           duration: 70.0,
           earthquake_id: 2,
         })
         .end((req, res) => {
-          chai.expect(res.body.msg).to.be.equal("date should be a date");
+          chai.expect(res.body.msg).to.be.equal("region should be a string");
           done();
         });
     });

@@ -12,8 +12,8 @@ describe("Earthquakes", () => {
       .request(app)
       .post("/api/earthquakes")
       .send({
-        date: "2024-05-09T12:00:00Z", // Example date
-        magnitude: "Not a number",
+        date: 111, // Example date
+        magnitude: 6,
         depth: 10.5,
         duration: 60.5,
         intensity: 8,
@@ -21,8 +21,7 @@ describe("Earthquakes", () => {
         after_shock_id: 0,
       })
       .end((req, res) => {
-        console.log(res)
-        chai.expect(res.body.msg).to.be.equal("magnitude should be a decimal");
+        chai.expect(res.body.msg).to.be.equal("date should be a date");
         done();
       });
   });
@@ -99,6 +98,7 @@ describe("Earthquakes", () => {
       .request(app)
       .put("/api/earthquakes/2")
       .send({
+        date: "2024-05-09T12:00:00Z",
         magnitude: 8.0,
         depth: 15.0,
         duration: 70.0,
