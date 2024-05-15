@@ -78,8 +78,9 @@ describe("Earthquakes", () => {
   it("should not update earthquake by id", (done) => {
     chai
       .request(app)
-      .put("/api/earthquakes/3")
+      .put("/api/earthquakes/4")
       .send({
+        date: "2024-05-09T12:00:00Z",
         magnitude: 8.0,
         depth: 15.0,
         duration: 70.0,
@@ -88,7 +89,7 @@ describe("Earthquakes", () => {
         after_shock_id: 0,
       })
       .end((req, res) => {
-        chai.expect(res.body.msg).to.be.equal("Earthquake with id: 3 not found");
+        chai.expect(res.body.msg).to.be.equal("Earthquake with id: 4 not found");
         done();
       });
   });

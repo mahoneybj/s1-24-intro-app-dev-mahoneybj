@@ -13,9 +13,9 @@ import {
 const router = express.Router();
 
 router.post("/", validatePostEarthquake, createEarthquake);
-router.get("/", getEarthquakes);
-router.get("/:id", getEarthquake);
-router.put("/:id", updateEarthquake);
-router.delete("/:id", deleteEarthquake);
+router.get("/",  getEarthquakes);
+router.get("/:id",  getEarthquake);
+router.put("/:id", validatePostEarthquake, updateEarthquake);
+router.delete("/:id",  deleteEarthquake);
 
 export default router;

@@ -87,6 +87,24 @@ describe("Building Damage", () => {
           done();
         });
     });
+
+    it("should not update building damage by id (Validation)", (done) => {
+      chai
+        .request(app)
+        .put("/api/buildings/2")
+        .send({
+          houses_damaged: "Not an int",
+          houses_destroyed: 10,
+          commerical_damaged: 5,
+          commerical_destroyed: 1,
+          earthquake_id: 2,
+          cost: 75000,
+        })
+        .end((req, res) => {
+          chai.expect(res.body.msg).to.be.equal("houses damaged should be a int");
+          done();
+        });
+    });
   
     it("should delete building damage by id", (done) => {
       chai
