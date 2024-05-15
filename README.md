@@ -29,7 +29,8 @@ To run automated tests, use the following commands in order:
 npm install
 npm install joi
 npm install chai@4.3.9 chai-http mocha --save-dev
-npx prisma db seed
+npx test
 ```
 
 ## API table ERD
+![ERD](https://github.com/otago-polytechnic-bit-courses/s1-24-intro-app-dev-mahoneybj/assets/65274137/158f93e5-1acc-4dc8-9ca2-ebeec13af113)
