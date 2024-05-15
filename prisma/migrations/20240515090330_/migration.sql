@@ -79,21 +79,11 @@ CREATE TABLE "SensorInfo" (
     "region" TEXT NOT NULL,
     "sensor_type" TEXT NOT NULL,
     "activate" BOOLEAN NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "SensorInfo_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "SensorEarthJoin" (
-    "id" SERIAL NOT NULL,
-    "sensor_id" INTEGER NOT NULL,
     "earthquake_id" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "SensorEarthJoin_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "SensorInfo_pkey" PRIMARY KEY ("id")
 );
 
 -- AddForeignKey
@@ -109,7 +99,4 @@ ALTER TABLE "EEWInfo" ADD CONSTRAINT "EEWInfo_earthquake_id_fkey" FOREIGN KEY ("
 ALTER TABLE "Landslide" ADD CONSTRAINT "Landslide_earthquake_id_fkey" FOREIGN KEY ("earthquake_id") REFERENCES "Earthquake"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "SensorEarthJoin" ADD CONSTRAINT "SensorEarthJoin_earthquake_id_fkey" FOREIGN KEY ("earthquake_id") REFERENCES "Earthquake"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "SensorEarthJoin" ADD CONSTRAINT "SensorEarthJoin_sensor_id_fkey" FOREIGN KEY ("sensor_id") REFERENCES "SensorInfo"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "SensorInfo" ADD CONSTRAINT "SensorInfo_earthquake_id_fkey" FOREIGN KEY ("earthquake_id") REFERENCES "Earthquake"("id") ON DELETE CASCADE ON UPDATE CASCADE;
