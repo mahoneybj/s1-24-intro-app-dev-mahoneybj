@@ -7,7 +7,7 @@ import app from "../app.js";
 chai.use(chaiHttp);
 
 describe("Earthquakes", () => {
-  it("should not create earthquake", (done) => {
+  it("should not create earthquake (Validation)", (done) => {
     chai
       .request(app)
       .post("/api/earthquakes")
@@ -89,6 +89,24 @@ describe("Earthquakes", () => {
       })
       .end((req, res) => {
         chai.expect(res.body.msg).to.be.equal("Earthquake with id: 3 not found");
+        done();
+      });
+  });
+
+  it("should not update earthquake by id (Validation)", (done) => {
+    chai
+      .request(app)
+      .put("/api/earthquakes/2")
+      .send({
+        magnitude: 8.0,
+        depth: 15.0,
+        duration: 70.0,
+        intensity: 99,
+        fault_line: "San Andreas Fault",
+        after_shock_id: 0,
+      })
+      .end((req, res) => {
+        chai.expect(res.body.msg).to.be.equal("intensity should have a maximum length of 8");
         done();
       });
   });

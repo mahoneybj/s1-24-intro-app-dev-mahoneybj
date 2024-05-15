@@ -85,7 +85,7 @@ describe("SensorInfo", () => {
     it("should not update SensorInfo by id (Validation)", (done) => {
       chai
         .request(app)
-        .put("/api/sensorinfo/3")
+        .put("/api/sensorinfo/2")
         .send({
           location: 123,
           region: "Updated Region",

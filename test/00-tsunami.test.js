@@ -88,7 +88,7 @@ describe("Tsunami", () => {
     it("should not update Tsunami by id (Validation)", (done) => {
       chai
         .request(app)
-        .put("/api/tsunamis/3")
+        .put("/api/tsunamis/2")
         .send({
           region: "Updated Region",
           date: 14032004,
