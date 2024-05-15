@@ -33,3 +33,4 @@ npx prisma db seed
 ```
 
 ## API table ERD
+![ERD](https://github.com/otago-polytechnic-bit-courses/s1-24-intro-app-dev-mahoneybj/assets/65274137/158f93e5-1acc-4dc8-9ca2-ebeec13af113)
