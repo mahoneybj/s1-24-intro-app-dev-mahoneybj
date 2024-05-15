@@ -1,10 +1,10 @@
 const endpoints = [
-  '/api/building/',
-  '/api/earthquake/',
+  '/api/buildings/',
+  '/api/earthquakes/',
   '/api/eewinfo/',
-  '/api/landslide/',
+  '/api/landslides/',
   '/api/sensorinfo/',
-  '/api/tsunami/'
+  '/api/tsunamis/'
 ];
 
 const get = (req, res) => {
