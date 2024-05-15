@@ -14,7 +14,7 @@ const router = express.Router();
 router.post("/", validatePostLandslide, createLandslide);
 router.get("/", getLandslides);
 router.get("/:id", getLandslide);
-router.put("/:id", updateLandslide);
+router.put("/:id", validatePostLandslide, updateLandslide);
 router.delete("/:id", deleteLandslide);
 
 export default router;

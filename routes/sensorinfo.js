@@ -14,7 +14,7 @@ const router = express.Router();
 router.post("/", validatePostSensorInfo, createSensorinfo);
 router.get("/", getSensorinfos);
 router.get("/:id", getSensorinfo);
-router.put("/:id", updateSensorinfo);
+router.put("/:id", validatePostSensorInfo, updateSensorinfo);
 router.delete("/:id", deleteSensorinfo);
 
 export default router;

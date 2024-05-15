@@ -14,7 +14,7 @@ const router = express.Router();
 router.post("/", validatePostEEWInfo, createEEWInfo);
 router.get("/", getEEWInfos);
 router.get("/:id", getEEWInfo);
-router.put("/:id", updateEEWinfo);
+router.put("/:id", validatePostEEWInfo, updateEEWinfo);
 router.delete("/:id", deleteEEWInfo);
 
 export default router;

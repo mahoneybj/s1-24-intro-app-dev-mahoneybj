@@ -7,7 +7,7 @@ import app from "../app.js";
 chai.use(chaiHttp);
 
 describe("EEWInfo", () => {
-    it("should not create EEWInfo", (done) => {
+    it("should not create EEWInfo (validation)", (done) => {
       chai
         .request(app)
         .post("/api/eewinfo")
@@ -78,12 +78,31 @@ describe("EEWInfo", () => {
           alert_triggered: false,
           date: "2024-05-09T12:00:00Z",
           region: "Updated Region",
-          duration: 300.5,
+          duration: 300,
           accuracy: 98.7,
           earthquake_id: 2,
         })
         .end((req, res) => {
           chai.expect(res.body.msg).to.be.equal("No EEW info with the id: 3 found");
+          done();
+        });
+    });
+
+    it("should not update EEWInfo by id (validation)", (done) => {
+      chai
+        .request(app)
+        .put("/api/eewinfo/2")
+        .send({
+          alert_triggered: false,
+          date: "2024-05-09T12:00:00Z",
+          region: "",
+          duration: 300.5,
+          accuracy: 98.7,
+          earthquake_id: 2
+        })
+        .end((req, res) => {
+          console.log(res)
+          chai.expect(res.body.msg).to.be.equal("Region cannot be empty");
           done();
         });
     });

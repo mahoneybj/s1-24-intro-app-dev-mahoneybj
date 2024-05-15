@@ -15,7 +15,7 @@ const router = express.Router();
 router.post("/", validatePostBuilding, createBuilding);
 router.get("/", getBuildings);
 router.get("/:id", getBuilding);
-router.put("/:id", updateBuilding);
+router.put("/:id", validatePostBuilding, updateBuilding);
 router.delete("/:id", deleteBuilding);
 
 export default router;

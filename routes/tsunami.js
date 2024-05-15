@@ -14,7 +14,7 @@ const router = express.Router();
 router.post("/", validatePostTsunami, createTsunami);
 router.get("/", getTsunamis);
 router.get("/:id", getTsunami);
-router.put("/:id", updateTsunami);
+router.put("/:id", validatePostTsunami, updateTsunami);
 router.delete("/:id", deleteTsunami);
 
 export default router;
