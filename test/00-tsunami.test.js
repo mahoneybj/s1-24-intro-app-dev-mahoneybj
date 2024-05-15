@@ -7,7 +7,7 @@ import app from "../app.js";
 chai.use(chaiHttp);
 
 describe("Tsunami", () => {
-    it("should not create Tsunami", (done) => {
+    it("should not create Tsunami (Validation)", (done) => {
       chai
         .request(app)
         .post("/api/tsunamis")
@@ -81,6 +81,23 @@ describe("Tsunami", () => {
         })
         .end((req, res) => {
           chai.expect(res.body.msg).to.be.equal("No tsunami with the id: 3 found");
+          done();
+        });
+    });
+
+    it("should not update Tsunami by id (Validation)", (done) => {
+      chai
+        .request(app)
+        .put("/api/tsunamis/3")
+        .send({
+          region: "Updated Region",
+          date: 14032004,
+          size: 9.0,
+          duration: 70.0,
+          earthquake_id: 2,
+        })
+        .end((req, res) => {
+          chai.expect(res.body.msg).to.be.equal("date should be a date");
           done();
         });
     });
