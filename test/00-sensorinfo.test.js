@@ -16,6 +16,7 @@ describe("SensorInfo", () => {
           region: "Test Region",
           sensor_type: "Test Sensor",
           activate: "Not a boolean",
+          earthquake_id: 1,
         })
         .end((req, res) => {
           chai.expect(res.body.msg).to.be.equal("Active status should be a boolean");
@@ -32,6 +33,7 @@ describe("SensorInfo", () => {
           region: "Test Region",
           sensor_type: "Test Sensor",
           activate: true,
+          earthquake_id: 1,
         })
         .end((req, res) => {
           chai.expect(res.status).to.be.equal(201);
@@ -75,6 +77,7 @@ describe("SensorInfo", () => {
           region: "Updated Region",
           sensor_type: "Updated Sensor",
           activate: false,
+          earthquake_id: 1,
         })
         .end((req, res) => {
           chai.expect(res.body.msg).to.be.equal("No sensorinfo with the id: 3 found");
@@ -91,6 +94,7 @@ describe("SensorInfo", () => {
           region: "Updated Region",
           sensor_type: "Updated Sensor",
           activate: false,
+          earthquake_id: 2,
         })
         .end((req, res) => {
           chai.expect(res.body.msg).to.be.equal("Location should be a string");

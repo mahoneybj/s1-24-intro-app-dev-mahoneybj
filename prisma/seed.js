@@ -46,19 +46,16 @@ const main = async () => {
             number: 32
           }
         },
-        
-      },
-
-      
+        SensorInfo: {
+          create: {
+            location: "Dunedin",
+            region: "Otago",
+            sensor_type: "ADXL-355",
+            activate: true
+          }
+        }
+      },  
     });
-    await prisma.SensorInfo.create({
-      data: {
-        location: "Dunedin",
-        region: "Otago",
-        sensor_type: "ADXL-355",
-        activate: true
-      }
-      });
 
       await prisma.earthquake.create({
         data: {

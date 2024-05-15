@@ -266,6 +266,11 @@ const validatePostBuilding = (req, res, next) => {
         "boolean.empty": "Active status cannot be empty",
         "any.required": "Active status is required",
       }),
+      earthquake_id: Joi.number().required().messages({
+        "number.base": "earthquake id should be a int",
+        "number.empty": "earthquake id cannot be empty",
+        "any.required": "earthquake id is required",
+      }),
     });
   
     const { error } = sensorinfoSchema.validate(req.body);

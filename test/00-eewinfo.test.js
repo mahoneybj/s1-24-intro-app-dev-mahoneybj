@@ -101,7 +101,6 @@ describe("EEWInfo", () => {
           earthquake_id: 2
         })
         .end((req, res) => {
-          console.log(res)
           chai.expect(res.body.msg).to.be.equal("Region cannot be empty");
           done();
         });
