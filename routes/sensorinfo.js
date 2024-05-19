@@ -1,3 +1,8 @@
+/**
+ * @file Defines routes for sensor info related API endpoints. Middleware is used for request body validation on create and update endpoints.
+ * @author Ben Mahoney
+ */
+
 import express from "express";
 import { validatePostSensorInfo } from "../middleware/validation.js";
 

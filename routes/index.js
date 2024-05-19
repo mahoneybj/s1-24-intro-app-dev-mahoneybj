@@ -1,3 +1,8 @@
+/**
+ * @file Defines routes for index get endpoint.
+ * @author Ben Mahoney
+ */
+
 // Import the Express module
 import express, { urlencoded, json } from "express"; // We will discuss the urlencoded and json functions later. Note: These will appear as unused.
 

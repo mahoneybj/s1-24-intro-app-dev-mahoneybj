@@ -1,3 +1,8 @@
+/**
+ * @file Set of Joi validation schemas used to validate the request body for different earthquake related API endpoints.
+ * @author Ben Mahoney
+ */
+
 import Joi from "joi";
 
 const validatePostEarthquake = (req, res, next) => {

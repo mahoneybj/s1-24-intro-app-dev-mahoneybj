@@ -1,3 +1,8 @@
+/**
+ * @file Manages all operations related to earthquakes
+ * @author Ben Mahoney
+ */
+
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();

@@ -1,3 +1,8 @@
+/**
+ * @file This file contains Mocha and Chai tests for the error thown when a fake endpoint is routed.
+ * @author Ben Mahoney
+ */
+
 import chai from "chai";
 import chaiHttp from "chai-http";
 import { describe, it } from "mocha";

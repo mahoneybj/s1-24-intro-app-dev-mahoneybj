@@ -1,3 +1,8 @@
+/**
+ * @file This file contains Mocha and Chai tests for the landslides related API endpoints.
+ * @author Ben Mahoney
+ */
+
 import chai from "chai";
 import chaiHttp from "chai-http";
 import { describe, it } from "mocha";

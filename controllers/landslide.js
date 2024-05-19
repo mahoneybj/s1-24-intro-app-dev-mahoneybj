@@ -1,3 +1,8 @@
+/**
+ * @file Manages all operations related to landslides
+ * @author Ben Mahoney
+ */
+
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
