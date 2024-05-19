@@ -1,3 +1,8 @@
+/**
+ * @file Returns hardcodded endpoints of the API
+ * @author Ben Mahoney
+ */
+
 const endpoints = [
   '/api/buildings/',
   '/api/earthquakes/',
