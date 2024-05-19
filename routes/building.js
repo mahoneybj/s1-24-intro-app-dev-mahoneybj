@@ -1,3 +1,8 @@
+/**
+ * @file Defines routes for building related API endpoints. Middleware is used for request body validation on create and update endpoints.
+ * @author Ben Mahoney
+ */
+
 import express from "express";
 import { validatePostBuilding } from "../middleware/validation.js";
 
