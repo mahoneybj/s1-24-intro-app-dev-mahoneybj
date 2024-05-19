@@ -1,3 +1,8 @@
+/**
+ * @file Uses the Prisma Client to interact with a Prisma database by creating multiple earthquakes with related data in a single transaction
+ * @author Ben Mahoney
+ */
+
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
