@@ -74,7 +74,7 @@ describe("Earthquakes", () => {
         chai.expect(res.status).to.be.equal(200);
         chai.expect(res.body).to.be.a("object");
         chai.expect(res.body.data).to.be.a("object");
-        chai.expect(res.body.data.id).to.be.equal(1); 
+        chai.expect(res.body.data.id).to.be.equal(1);
         done();
       });
   });
@@ -93,7 +93,9 @@ describe("Earthquakes", () => {
         after_shock_id: 0,
       })
       .end((req, res) => {
-        chai.expect(res.body.msg).to.be.equal("Earthquake with id: 4 not found");
+        chai
+          .expect(res.body.msg)
+          .to.be.equal("Earthquake with id: 4 not found");
         done();
       });
   });
@@ -112,7 +114,9 @@ describe("Earthquakes", () => {
         after_shock_id: 0,
       })
       .end((req, res) => {
-        chai.expect(res.body.msg).to.be.equal("intensity should have a maximum length of 8");
+        chai
+          .expect(res.body.msg)
+          .to.be.equal("intensity should have a maximum length of 8");
         done();
       });
   });

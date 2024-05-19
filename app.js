@@ -1,5 +1,5 @@
 /**
- * @file This file is the entry point for the Express server. It configures the server with various functionalities: 
+ * @file This file is the entry point for the Express server. It configures the server with various functionalities:
  * Security headers, CORS middleware to handle cross-origin requests, Body parsers for urlencoded and JSON payloads and Routing for different functionalities using imported route modules
  * @author Ben Mahoney
  */

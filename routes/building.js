@@ -6,7 +6,6 @@
 import express from "express";
 import { validatePostBuilding } from "../middleware/validation.js";
 
-
 import {
   createBuilding,
   getBuildings,

@@ -4,16 +4,16 @@
  */
 
 const endpoints = [
-  '/api/buildings/',
-  '/api/earthquakes/',
-  '/api/eewinfo/',
-  '/api/landslides/',
-  '/api/sensorinfo/',
-  '/api/tsunamis/'
+  "/api/buildings/",
+  "/api/earthquakes/",
+  "/api/eewinfo/",
+  "/api/landslides/",
+  "/api/sensorinfo/",
+  "/api/tsunamis/",
 ];
 
 const get = (req, res) => {
-  res.send( {data: endpoints} );
+  res.send({ data: endpoints });
 };
 
 // Export the get function
