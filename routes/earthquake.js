@@ -1,3 +1,8 @@
+/**
+ * @file Defines routes for earthquake related API endpoints. Middleware is used for request body validation on create and update endpoints.
+ * @author Ben Mahoney
+ */
+
 import express from "express";
 import { validatePostEarthquake } from "../middleware/validation.js";
 
