@@ -1,7 +1,7 @@
 # Earthquake early warning API
 
 ## Description
-Rest API Express and node.js. Earthquake early warning API used to access and modify infomation related to Earthquakes and a warning system.
+Rest API using Express and node.js. Earthquake early warning API used to access and modify infomation related to Earthquakes and a warning system.
 
 ## Table of Contents
 - [API Link](#api-link)
