@@ -55,7 +55,7 @@ const main = async () => {
           create: {
             location: "Dunedin",
             region: "Otago",
-            sensor_type: "ADXL-355",
+            sensor_type: "ACCELEROMETER",
             activate: true,
           },
         },

@@ -19,7 +19,7 @@ describe("SensorInfo", () => {
       .send({
         location: "Test Location",
         region: "Test Region",
-        sensor_type: "Test Sensor",
+        sensor_type: "GEOPHONE",
         activate: "Not a boolean",
         earthquake_id: 1,
       })
@@ -38,7 +38,7 @@ describe("SensorInfo", () => {
       .send({
         location: "Test Location",
         region: "Test Region",
-        sensor_type: "Test Sensor",
+        sensor_type: "OTHER",
         activate: true,
         earthquake_id: 1,
       })
@@ -84,7 +84,7 @@ describe("SensorInfo", () => {
       .send({
         location: "Updated Location",
         region: "Updated Region",
-        sensor_type: "Updated Sensor",
+        sensor_type: "OTHER",
         activate: false,
         earthquake_id: 1,
       })
@@ -103,7 +103,7 @@ describe("SensorInfo", () => {
       .send({
         location: 123,
         region: "Updated Region",
-        sensor_type: "Updated Sensor",
+        sensor_type: "ACCELEROMETER",
         activate: false,
         earthquake_id: 2,
       })
