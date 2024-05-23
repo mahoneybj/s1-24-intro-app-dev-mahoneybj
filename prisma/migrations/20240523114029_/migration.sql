@@ -1,3 +1,6 @@
+-- CreateEnum
+CREATE TYPE "SensorType" AS ENUM ('ACCELEROMETER', 'GEOPHONE', 'OTHER');
+
 -- CreateTable
 CREATE TABLE "Earthquake" (
     "id" SERIAL NOT NULL,
@@ -77,7 +80,7 @@ CREATE TABLE "SensorInfo" (
     "id" SERIAL NOT NULL,
     "location" TEXT NOT NULL,
     "region" TEXT NOT NULL,
-    "sensor_type" TEXT NOT NULL,
+    "sensor_type" "SensorType" NOT NULL DEFAULT 'ACCELEROMETER',
     "activate" BOOLEAN NOT NULL,
     "earthquake_id" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
