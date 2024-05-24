@@ -30,18 +30,25 @@ const BuildingDamageForm = ({ onFormSubmit }) => {
     submitError: "",
   });
 
-  // This function is called when the input fields change
   const handleChange = (e) => {
-    const { name, value } = e.target; // name refers to the name attribute of the input field, value refers to the value of the input field
+    const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
     setErrors({ ...errors, [name]: "" });
   };
 
-  // This function is called when the form is submitted
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent the default form submission
+    e.preventDefault(); 
     try {
-      await earthquakeEarlyWarningSystemInstance.post("/buildings", formData);
+      const payload = {
+        houses_damaged: parseInt(formData.houses_damaged, 10),
+        houses_destroyed: parseInt(formData.houses_destroyed, 10),
+        commerical_damaged: parseInt(formData.commerical_damaged, 10),
+        commerical_destroyed: parseInt(formData.commerical_destroyed, 10),
+        earthquake_id: parseInt(formData.earthquake_id, 10),
+        cost: parseFloat(formData.cost),
+      };
+
+      await earthquakeEarlyWarningSystemInstance.post("/buildings", payload);
       setFormData({
         houses_damaged: "",
         houses_destroyed: "",
@@ -59,15 +66,15 @@ const BuildingDamageForm = ({ onFormSubmit }) => {
         cost: "",
         submitError: "",
       });
-      onFormSubmit(); // Call the onFormSubmit prop
+      onFormSubmit(); 
     } catch (err) {
-      // Handle validation errors
+      
       if (err.response && err.response.data && err.response.data.msg) {
-        const errorMsg = err.response.data.msg; // Get the error message
-        const field = errorMsg.split(" ")[0]; // Get the field name from the error message, i.e., "date should be a string" -> "date"
+        const errorMsg = err.response.data.msg; 
+        const field = errorMsg.split(" ")[0]; 
         setErrors((prevErrors) => ({
-          ...prevErrors, // Keep the other errors
-          [field]: errorMsg, // Set the error for the field
+          ...prevErrors, 
+          [field]: errorMsg, 
         }));
       } else {
         console.log(err);
