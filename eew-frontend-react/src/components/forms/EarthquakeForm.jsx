@@ -50,8 +50,11 @@ const EarthquakeForm = ({ onFormSubmit }) => {
           duration: parseFloat(formData.duration),
           intensity: parseInt(formData.intensity),
           fault_line: formData.fault_line,
-          after_shock_id: parseInt(formData.after_shock_id, 10),
         };
+
+        if (formData.after_shock_id) {
+          payload.after_shock_id = parseInt(formData.after_shock_id, 10);
+        }
 
       await earthquakeEarlyWarningSystemInstance.post("/earthquakes", payload);
       setFormData({
