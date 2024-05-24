@@ -15,7 +15,7 @@ import {
 import { earthquakeEarlyWarningSystemInstance } from "../../utils/axios";
 import EarthquakeEarlyWarningInfoForm from "../forms/EarthquakeEarlyWarningInfoForm";
 
-const EarthquakeEarlyWarningInfoTabke = () => {
+const EarthquakeEarlyWarningInfoTable = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
   const [errors, setErrors] = useState({
@@ -104,7 +104,7 @@ const EarthquakeEarlyWarningInfoTabke = () => {
 
   return (
     <>
-      <BuildingDamageForm onFormSubmit={handleFormSubmit} />
+      <EarthquakeEarlyWarningInfoForm onFormSubmit={handleFormSubmit} />
       {isLoading ? (
         <p>Loading...</p>
       ) : (
@@ -277,4 +277,4 @@ const EarthquakeEarlyWarningInfoTabke = () => {
   );
 };
 
-export default EarthquakeEarlyWarningInfoForm;
+export default EarthquakeEarlyWarningInfoTable;
