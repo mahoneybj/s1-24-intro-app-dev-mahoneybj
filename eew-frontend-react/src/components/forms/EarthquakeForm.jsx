@@ -44,7 +44,7 @@ const EarthquakeForm = ({ onFormSubmit }) => {
     e.preventDefault(); // Prevent the default form submission
       try {
         const payload = {
-          date: formData.date,
+          date: new Date(formData.date).toISOString(),
           magnitude: parseFloat(formData.magnitude),
           depth: parseFloat(formData.depth, 10),
           duration: parseFloat(formData.duration),
