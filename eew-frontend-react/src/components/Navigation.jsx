@@ -16,6 +16,7 @@ import EarthquakeTable from "./tables/EarthquakeTable";
 import BuildingDamageTable from "./tables/BuildingDamageTable";
 import EarthquakeEarlyWarningInfoTable from "./tables/EarthquakeEarlyWarningInfoTable";
 
+
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 

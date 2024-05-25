@@ -102,7 +102,7 @@ const TsunamiTable = () => {
 
   return (
     <>
-      <BuildingDamageForm onFormSubmit={handleFormSubmit} />
+      <TsunamiForm onFormSubmit={handleFormSubmit} />
       {isLoading ? (
         <p>Loading...</p>
       ) : (
@@ -262,4 +262,4 @@ const TsunamiTable = () => {
   );
 };
 
-export default TsunamiForm;
+export default TsunamiTable;
