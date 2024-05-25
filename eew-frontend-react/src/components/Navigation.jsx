@@ -14,6 +14,7 @@ import {
 
 import EarthquakeTable from "./tables/EarthquakeTable";
 import BuildingDamageTable from "./tables/BuildingDamageTable";
+import EarthquakeEarlyWarningInfoTable from "./tables/EarthquakeEarlyWarningInfoTable";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,12 +34,16 @@ const Navigation = () => {
             <NavItem>
               <NavLink href="/buildings">Building Damage</NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink href="/eewinfo">EEW-Info</NavLink>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
       <Routes>
         <Route path="/earthquakes" element={<EarthquakeTable />} />
         <Route path="/buildings" element={<BuildingDamageTable />} />
+        <Route path="/eewinfo" element={<EarthquakeEarlyWarningInfoTable />} />
       </Routes>
     </Router>
   );
