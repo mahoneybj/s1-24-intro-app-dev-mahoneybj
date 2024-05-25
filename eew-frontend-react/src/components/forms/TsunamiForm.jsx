@@ -45,7 +45,7 @@ const TsunamiForm = ({ onFormSubmit }) => {
         earthquake_id: parseInt(formData.earthquake_id, 10),
       };
 
-      await earthquakeEarlyWarningSystemInstance.post("/buildings", payload);
+      await earthquakeEarlyWarningSystemInstance.post("/tsunamis", payload);
       setFormData({
         region: "",
         date: "",
