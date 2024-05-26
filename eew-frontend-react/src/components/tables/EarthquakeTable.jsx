@@ -266,7 +266,7 @@ const EarthquakeTable = () => {
                 color="primary"
                 onClick={() => {
                   const editedData = {
-                    date: document.getElementById("editDate").value,
+                    date: new Date(document.getElementById("editDate").value).toISOString(),
                     magnitude: document.getElementById("editMagnitude").value,
                     depth: document.getElementById("editDepth").value,
                     duration: document.getElementById("editDuration").value,
