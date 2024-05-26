@@ -17,6 +17,7 @@ import BuildingDamageTable from "./tables/BuildingDamageTable";
 import EarthquakeEarlyWarningInfoTable from "./tables/EarthquakeEarlyWarningInfoTable";
 import TsunamiTable from "./tables/TsunamiTable";
 import LandslideTable from "./tables/LandslideTable";
+import SensorInfoTable from "./tables/SensorInfoTable";
 
 
 const Navigation = () => {
@@ -46,6 +47,9 @@ const Navigation = () => {
             <NavItem>
               <NavLink href="/landslides">Landslide</NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink href="/sensorinfo">Sensor Info</NavLink>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
@@ -55,6 +59,7 @@ const Navigation = () => {
         <Route path="/eewinfo" element={<EarthquakeEarlyWarningInfoTable />} />
         <Route path="/tsunamis" element={<TsunamiTable />} />
         <Route path="/landslides" element={<LandslideTable />} />
+        <Route path="/sensorinfo" element={<SensorInfoTable />} />
       </Routes>
     </Router>
   );
