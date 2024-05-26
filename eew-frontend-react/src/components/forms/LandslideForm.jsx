@@ -43,7 +43,6 @@ const LandslideForm = ({ onFormSubmit }) => {
         region: formData.region,
         number: parseInt(formData.number, 10),
         earthquake_id: parseInt(formData.earthquake_id, 10),
-        cost: parseFloat(formData.cost),
       };
 
       await earthquakeEarlyWarningSystemInstance.post("/landslides", payload);
