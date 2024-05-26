@@ -253,7 +253,7 @@ const EarthquakeTable = () => {
                 <Label for="editAfterShockId">After Shock ID:</Label>
                 <Input
                   type="number"
-                  defaultValue={editItem?.after_shock_id}
+                  defaultValue={editItem?.after_shock_id || ""}
                   id="editAfterShockId"
                   name="editAfterShockId"
                   invalid={!!errors.after_shock_id}
@@ -264,17 +264,21 @@ const EarthquakeTable = () => {
             <ModalFooter>
               <Button
                 color="primary"
-                onClick={() =>
-                  handleEditFormSubmit({
+                onClick={() => {
+                  const editedData = {
                     date: document.getElementById("editDate").value,
                     magnitude: document.getElementById("editMagnitude").value,
                     depth: document.getElementById("editDepth").value,
                     duration: document.getElementById("editDuration").value,
                     intensity: document.getElementById("editIntensity").value,
                     fault_line: document.getElementById("editFaultLine").value,
-                    after_shock_id: document.getElementById("editAfterShockId").value,
-                  })
-                }
+                  };
+                  const afterShockId = document.getElementById("editAfterShockId").value;
+                  if (afterShockId) {
+                    editedData.after_shock_id = afterShockId;
+                  }
+                  handleEditFormSubmit(editedData);
+                }}
               >
                 Save
               </Button>
