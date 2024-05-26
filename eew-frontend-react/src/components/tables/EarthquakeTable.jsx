@@ -267,10 +267,10 @@ const EarthquakeTable = () => {
                 onClick={() => {
                   const editedData = {
                     date: new Date(document.getElementById("editDate").value).toISOString(),
-                    magnitude: document.getElementById("editMagnitude").value,
-                    depth: document.getElementById("editDepth").value,
-                    duration: document.getElementById("editDuration").value,
-                    intensity: document.getElementById("editIntensity").value,
+                    magnitude: parseFloat(document.getElementById("editMagnitude").value),
+                    depth: parseFloat(document.getElementById("editDepth").value),
+                    duration: parseFloat(document.getElementById("editDuration").value),
+                    intensity: parseInt(document.getElementById("editIntensity").value, 10),
                     fault_line: document.getElementById("editFaultLine").value,
                   };
                   const afterShockId = document.getElementById("editAfterShockId").value;
