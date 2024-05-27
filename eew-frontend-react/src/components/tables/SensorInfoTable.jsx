@@ -197,23 +197,32 @@ const SensorInfoTable = () => {
               <FormGroup>
                 <Label for="editSensorType">Sensor Type:</Label>
                 <Input
-                  type="text"  // ENUM!!!!
+                  type="select"  
                   defaultValue={editItem?.sensor_type}
                   id="editSensorType"
                   name="editSensorType"
                   invalid={!!errors.sensor_type}
-                />
+                >
+                  <option>Select Sensor Type</option>
+                  <option value="ACCELEROMETER">Accelerometer</option>
+                  <option value="GEOPHONE">Geophone</option>
+                  <option value="OTHER">Other</option>
+                </Input>
                 <FormFeedback>{errors.sensor_type}</FormFeedback>
               </FormGroup>
               <FormGroup>
                 <Label for="editActivate">Sensor Active?:</Label>
                 <Input
-                  type="text"  // BOOLEAN!!!
+                  type="select"  
                   defaultValue={editItem?.activate}
                   id="editActivate"
                   name="editActivate"
                   invalid={!!errors.activate}
-                />
+                >
+                <option>Select Sensor Status</option>
+                <option value="true">Active</option>
+                <option value="false">Deactivated</option>
+              </Input>
                 <FormFeedback>{errors.activate}</FormFeedback>
               </FormGroup>
               <FormGroup>
@@ -231,15 +240,22 @@ const SensorInfoTable = () => {
             <ModalFooter>
               <Button
                 color="primary"
-                onClick={() =>
-                  handleEditFormSubmit({
+                onClick={() =>{
+                  const editedData = {
                     location: document.getElementById("editLocation").value,
                     region: document.getElementById("editRegion").value,
                     sensor_type: document.getElementById("editSensorType").value,
                     activate: document.getElementById("editActivate").value,
-                    earthquake_id: document.getElementById("editEarthquakeId").value,
-                  })
-                }
+                    earthquake_id: parseInt(document.getElementById("editEarthquakeId").value, 10),
+                  };
+                  const activateStr = document.getElementById("editActivate").value;
+                  if(activateStr == "true"){
+                    editedData.activate = true;
+                  }else{
+                    editedData.activate = false;
+                  }
+                  handleEditFormSubmit(editedData);
+                }}
               >
                 Save
               </Button>
