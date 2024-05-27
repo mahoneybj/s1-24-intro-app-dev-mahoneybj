@@ -236,10 +236,10 @@ const TsunamiTable = () => {
                 onClick={() =>
                   handleEditFormSubmit({
                     region: document.getElementById("editRegion").value,
-                    date: document.getElementById("editDate").value,
-                    size: document.getElementById("editSize").value,
-                    duration: document.getElementById("editDuration").value,
-                    earthquake_id: document.getElementById("editEarthquakeId").value,
+                    date: new Date(document.getElementById("editDate").value).toISOString(),
+                    size: parseFloat(document.getElementById("editSize").value),
+                    duration: parseFloat(document.getElementById("editDuration").value),
+                    earthquake_id: parseInt(document.getElementById("editEarthquakeId").value, 10),
                   })
                 }
               >
