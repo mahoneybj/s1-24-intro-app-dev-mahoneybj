@@ -235,11 +235,11 @@ const LandslideTable = () => {
                 color="primary"
                 onClick={() =>
                   handleEditFormSubmit({
-                    smallest: document.getElementById("editSmallest").value,
-                    largest: document.getElementById("editLargest").value,
+                    smallest: parseFloat(document.getElementById("editSmallest").value),
+                    largest: parseFloat(document.getElementById("editLargest").value),
                     region: document.getElementById("editRegion").value,
-                    number: document.getElementById("editNumber").value,
-                    earthquake_id: document.getElementById("editEarthquakeId").value,
+                    number: parseInt(document.getElementById("editNumber").value, 10),
+                    earthquake_id: parseInt(document.getElementById("editEarthquakeId").value, 10),
                   })
                 }
               >
