@@ -114,7 +114,7 @@ const SensorInfoForm = ({ onFormSubmit }) => {
           onChange={handleChange}
           invalid={!!errors.sensor_type}
         >
-          <option value="">Select Sensor Type</option>
+          <option>Select Sensor Type</option>
           <option value="ACCELEROMETER">Accelerometer</option>
           <option value="GEOPHONE">Geophone</option>
           <option value="OTHER">Other</option>
