@@ -134,7 +134,7 @@ const EarthquakeEarlyWarningInfoTable = () => {
                   {data.map((item) => (
                     <tr key={item.id}>
                       <td>{item.id}</td>
-                      <td>{item.alert_triggered}</td>
+                      <td>{item.alert_triggered.toString()}</td>
                       <td>{item.date}</td>
                       <td>{item.region}</td>
                       <td>{item.duration}</td>
@@ -179,12 +179,16 @@ const EarthquakeEarlyWarningInfoTable = () => {
               <FormGroup>
                 <Label for="editAlertTriggered">Alert Triggered:</Label>
                 <Input
-                  type="text"
+                  type="select"
                   defaultValue={editItem?.alert_triggered}
                   id="editAlertTriggered"
                   name="editAlertTriggered"
                   invalid={!!errors.alert_triggered}
-                />
+                >
+                  <option>Select Alert Status</option>
+                  <option value="true">True</option>
+                  <option value="false">False</option>
+                  </Input>
                 <FormFeedback>{errors.alert_triggered}</FormFeedback>
               </FormGroup>
               <FormGroup>
@@ -247,16 +251,23 @@ const EarthquakeEarlyWarningInfoTable = () => {
             <ModalFooter>
               <Button
                 color="primary"
-                onClick={() =>
-                  handleEditFormSubmit({
+                onClick={() => {
+                  const editedData = {
                     alert_triggered: document.getElementById("editAlertTriggered").value,
-                    date: document.getElementById("editDate").value,
+                    date: new Date(document.getElementById("editDate").value).toISOString(),
                     region: document.getElementById("editRegion").value,
-                    duration: document.getElementById("editDuration").value,
-                    accuracy: document.getElementById("editAccuracy").value,
-                    earthquake_id: document.getElementById("editEarthquakeId").value,
-                  })
-                }
+                    duration: parseFloat(document.getElementById("editDuration").value),
+                    accuracy: parseFloat(document.getElementById("editAccuracy").value),
+                    earthquake_id: parseInt(document.getElementById("editEarthquakeId").value, 10),
+                  };
+                  const alertStr = document.getElementById("editAlertTriggered").value;
+                  if(alertStr == "true"){
+                    editedData.alert_triggered = true;
+                  }else{
+                    editedData.alert_triggered = false;
+                  }
+                  handleEditFormSubmit(editedData);
+                }}
               >
                 Save
               </Button>
