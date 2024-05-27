@@ -144,7 +144,7 @@ const LandslideForm = ({ onFormSubmit }) => {
       {errors.submitError && (
         <div className="text-danger">{errors.submitError}</div>
       )}
-      <Button type="submit">Add Building Damage</Button>
+      <Button type="submit">Add Landslide</Button>
     </Form>
   );
 };
