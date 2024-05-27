@@ -40,13 +40,19 @@ const EarthquakeEarlyWarningInfoForm = ({ onFormSubmit }) => {
     e.preventDefault(); 
     try {
       const payload = {
-        alert_triggered: formData.alert_triggered,
         date: new Date(formData.date).toISOString(),
         region: formData.region,
         duration: parseFloat(formData.duration),
         accuracy: parseFloat(formData.accuracy),
         earthquake_id: parseInt(formData.earthquake_id, 10),
       };
+
+            // Converting activate to boolean value
+            if(formData.alert_triggered == "true"){
+              payload.alert_triggered = true;
+            }else{
+              payload.alert_triggered = false;
+            }
 
       await earthquakeEarlyWarningSystemInstance.post("/eewinfo", payload);
       setFormData({
@@ -87,13 +93,17 @@ const EarthquakeEarlyWarningInfoForm = ({ onFormSubmit }) => {
       <FormGroup>
         <Label for="alert_triggered">Alert Triggered:</Label>
         <Input
-          type="text"
+          type="select"
           value={formData.alert_triggered}
           id="alert_triggered"
           name="alert_triggered"
           onChange={handleChange}
           invalid={!!errors.alert_triggered}
-        />
+        >
+          <option>Alert triggered?</option>
+          <option value="true">True</option>
+          <option value="false">False</option>
+        </Input> 
         <FormFeedback>{errors.alert_triggered}</FormFeedback>
       </FormGroup>
       <FormGroup>
