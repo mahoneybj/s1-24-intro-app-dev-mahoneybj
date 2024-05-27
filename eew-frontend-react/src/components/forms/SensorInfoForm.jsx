@@ -41,9 +41,15 @@ const SensorInfoForm = ({ onFormSubmit }) => {
         location: formData.houses_damaged,
         region: formData.houses_destroyed,
         sensor_type: formData.commerical_damaged, // ENUM!!!
-        activate: formData.commerical_destroyed, // BOOLEAN!!!!
         earthquake_id: parseInt(formData.earthquake_id, 10),
       };
+
+      // Converting activate to boolean value
+      if(formData.activate == "true"){
+        payload.activate = true;
+      }else{
+        payload.activate = false;
+      }
 
       await earthquakeEarlyWarningSystemInstance.post("/sensorinfo", payload);
       setFormData({
