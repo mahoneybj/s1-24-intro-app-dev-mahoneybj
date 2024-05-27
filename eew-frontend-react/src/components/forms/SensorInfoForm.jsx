@@ -124,13 +124,17 @@ const SensorInfoForm = ({ onFormSubmit }) => {
       <FormGroup>
         <Label for="commerical_destroyed">Sensor Active?:</Label>
         <Input
-          type="number" //Change to work with booleans
+          type="select" //Change to work with booleans
           value={formData.activate}
           id="activate"
           name="activate"
           onChange={handleChange}
           invalid={!!errors.activate}
-        />
+        >
+          <option>Select Sensor Status</option>
+          <option value="true">Active</option>
+          <option value="false">Deactivated</option>
+        </Input>
         <FormFeedback>{errors.activate}</FormFeedback>
       </FormGroup>
       <FormGroup>
