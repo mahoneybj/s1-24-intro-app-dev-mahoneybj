@@ -38,9 +38,9 @@ const SensorInfoForm = ({ onFormSubmit }) => {
     e.preventDefault(); 
     try {
       const payload = {
-        location: formData.houses_damaged,
-        region: formData.houses_destroyed,
-        sensor_type: formData.commerical_damaged, // ENUM!!!
+        location: formData.location,
+        region: formData.region,
+        sensor_type: formData.sensor_type, // ENUM!!!
         earthquake_id: parseInt(formData.earthquake_id, 10),
       };
 

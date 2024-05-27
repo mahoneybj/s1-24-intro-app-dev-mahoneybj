@@ -134,7 +134,7 @@ const SensorInfoTable = () => {
                       <td>{item.location}</td>
                       <td>{item.region}</td>
                       <td>{item.sensor_type}</td>
-                      <td>{item.activate}</td>
+                      <td>{item.activate.toString()}</td>
                       <td>{item.earthquake_id}</td>
                       <td>
                         <Button
