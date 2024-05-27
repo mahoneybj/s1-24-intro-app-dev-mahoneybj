@@ -38,12 +38,18 @@ const SensorInfoForm = ({ onFormSubmit }) => {
     e.preventDefault(); 
     try {
       const payload = {
-        location: formData.houses_damaged,
-        region: formData.houses_destroyed,
-        sensor_type: formData.commerical_damaged, // ENUM!!!
-        activate: formData.commerical_destroyed, // BOOLEAN!!!!
+        location: formData.location,
+        region: formData.region,
+        sensor_type: formData.sensor_type, // ENUM!!!
         earthquake_id: parseInt(formData.earthquake_id, 10),
       };
+
+      // Converting activate to boolean value
+      if(formData.activate == "true"){
+        payload.activate = true;
+      }else{
+        payload.activate = false;
+      }
 
       await earthquakeEarlyWarningSystemInstance.post("/sensorinfo", payload);
       setFormData({
@@ -105,26 +111,36 @@ const SensorInfoForm = ({ onFormSubmit }) => {
       </FormGroup>
       <FormGroup>
         <Label for="sensor_type">Sensor Type:</Label>
+        
         <Input
-          type="text"
+          type="select"
           value={formData.sensor_type}
           id="sensor_type"
           name="sensor_type"
           onChange={handleChange}
           invalid={!!errors.sensor_type}
-        />
-        <FormFeedback>{errors.activate}</FormFeedback>
+        >
+          <option>Select Sensor Type</option>
+          <option value="ACCELEROMETER">Accelerometer</option>
+          <option value="GEOPHONE">Geophone</option>
+          <option value="OTHER">Other</option>
+        </Input>
+        <FormFeedback>{errors.sensor_type}</FormFeedback>
       </FormGroup>
       <FormGroup>
         <Label for="commerical_destroyed">Sensor Active?:</Label>
         <Input
-          type="number" //Change to work with booleans
+          type="select" //Change to work with booleans
           value={formData.activate}
           id="activate"
           name="activate"
           onChange={handleChange}
           invalid={!!errors.activate}
-        />
+        >
+          <option>Select Sensor Status</option>
+          <option value="true">Active</option>
+          <option value="false">Deactivated</option>
+        </Input>
         <FormFeedback>{errors.activate}</FormFeedback>
       </FormGroup>
       <FormGroup>
