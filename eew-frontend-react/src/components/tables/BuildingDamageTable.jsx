@@ -249,12 +249,12 @@ const BuildingDamageTable = () => {
                 color="primary"
                 onClick={() =>
                   handleEditFormSubmit({
-                    houses_damaged: document.getElementById("editHousesDamaged").value,
-                    houses_destroyed: document.getElementById("editHousesDestroyed").value,
-                    commerical_damaged: document.getElementById("editCommericalDamaged").value,
-                    commerical_destroyed: document.getElementById("editCommericalDestroyed").value,
-                    earthquake_id: document.getElementById("editEarthquakeId").value,
-                    cost: document.getElementById("editCost").value,
+                    houses_damaged: parseInt(document.getElementById("editHousesDamaged").value, 10),
+                    houses_destroyed: parseInt(document.getElementById("editHousesDestroyed").value, 10),
+                    commerical_damaged: parseInt(document.getElementById("editCommericalDamaged").value, 10),
+                    commerical_destroyed: parseInt(document.getElementById("editCommericalDestroyed").value, 10),
+                    earthquake_id: parseInt(document.getElementById("editEarthquakeId").value, 10),
+                    cost: parseFloat(document.getElementById("editCost").value),
                   })
                 }
               >
