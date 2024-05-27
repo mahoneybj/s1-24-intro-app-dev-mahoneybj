@@ -105,15 +105,21 @@ const SensorInfoForm = ({ onFormSubmit }) => {
       </FormGroup>
       <FormGroup>
         <Label for="sensor_type">Sensor Type:</Label>
+        
         <Input
-          type="text"
+          type="select"
           value={formData.sensor_type}
           id="sensor_type"
           name="sensor_type"
           onChange={handleChange}
           invalid={!!errors.sensor_type}
-        />
-        <FormFeedback>{errors.activate}</FormFeedback>
+        >
+          <option value="">Select Sensor Type</option>
+          <option value="ACCELEROMETER">Accelerometer</option>
+          <option value="GEOPHONE">Geophone</option>
+          <option value="OTHER">Other</option>
+        </Input>
+        <FormFeedback>{errors.sensor_type}</FormFeedback>
       </FormGroup>
       <FormGroup>
         <Label for="commerical_destroyed">Sensor Active?:</Label>
