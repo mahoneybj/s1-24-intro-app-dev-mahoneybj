@@ -5,6 +5,7 @@ Rest API using Express and node.js. Earthquake early warning API used to access 
 
 ## Table of Contents
 - [API Link](#api-link)
+- [Documentation](#documentation)
 - [Seeding the Database](#seeding-the-database)
 - [Running Chai and Mocha tests](#running-chai-and-mocha-tests)
 - [API table ERD](#api-table-erd)
@@ -13,6 +14,12 @@ Rest API using Express and node.js. Earthquake early warning API used to access 
 (Note if link hasnt been used for a while, requests may be slow)
 ```
 https://s1-24-intro-app-dev-mahoneybj.onrender.com
+```
+
+## Documentation
+Link to postman route testing documentation
+```
+https://documenter.getpostman.com/view/33350013/2sA3QtcW1P
 ```
 
 ## Seeding the Database
