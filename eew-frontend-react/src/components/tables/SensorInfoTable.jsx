@@ -62,13 +62,13 @@ const SensorInfoTable = () => {
     setModalOpen(true); // Open the modal
   };
 
-  const resetErrors = () => { 
+  const resetErrors = () => {
     setErrors({
-        location: "",
-        region: "",
-        sensor_type: "",
-        activate: "",
-        earthquake_id: "",
+      location: "",
+      region: "",
+      sensor_type: "",
+      activate: "",
+      earthquake_id: "",
       submitError: "",
     });
   };
@@ -122,7 +122,7 @@ const SensorInfoTable = () => {
             <tbody>
               {data.length === 0 ? (
                 <tr>
-                  <td colSpan="7" className="text-center"> 
+                  <td colSpan="7" className="text-center">
                     No data available
                   </td>
                 </tr>
@@ -197,7 +197,7 @@ const SensorInfoTable = () => {
               <FormGroup>
                 <Label for="editSensorType">Sensor Type:</Label>
                 <Input
-                  type="select"  
+                  type="select"
                   defaultValue={editItem?.sensor_type}
                   id="editSensorType"
                   name="editSensorType"
@@ -213,16 +213,16 @@ const SensorInfoTable = () => {
               <FormGroup>
                 <Label for="editActivate">Sensor Active?:</Label>
                 <Input
-                  type="select"  
+                  type="select"
                   defaultValue={editItem?.activate}
                   id="editActivate"
                   name="editActivate"
                   invalid={!!errors.activate}
                 >
-                <option>Select Sensor Status</option>
-                <option value="true">Active</option>
-                <option value="false">Deactivated</option>
-              </Input>
+                  <option>Select Sensor Status</option>
+                  <option value="true">Active</option>
+                  <option value="false">Deactivated</option>
+                </Input>
                 <FormFeedback>{errors.activate}</FormFeedback>
               </FormGroup>
               <FormGroup>
@@ -240,7 +240,7 @@ const SensorInfoTable = () => {
             <ModalFooter>
               <Button
                 color="primary"
-                onClick={() =>{
+                onClick={() => {
                   const editedData = {
                     location: document.getElementById("editLocation").value,
                     region: document.getElementById("editRegion").value,
@@ -249,9 +249,9 @@ const SensorInfoTable = () => {
                     earthquake_id: parseInt(document.getElementById("editEarthquakeId").value, 10),
                   };
                   const activateStr = document.getElementById("editActivate").value;
-                  if(activateStr == "true"){
+                  if (activateStr == "true") {
                     editedData.activate = true;
-                  }else{
+                  } else {
                     editedData.activate = false;
                   }
                   handleEditFormSubmit(editedData);

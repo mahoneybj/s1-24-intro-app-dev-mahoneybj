@@ -35,7 +35,7 @@ const TsunamiForm = ({ onFormSubmit }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     try {
       const payload = {
         region: formData.region,
@@ -61,15 +61,15 @@ const TsunamiForm = ({ onFormSubmit }) => {
         earthquake_id: "",
         submitError: "",
       });
-      onFormSubmit(); 
+      onFormSubmit();
     } catch (err) {
-      
+
       if (err.response && err.response.data && err.response.data.msg) {
-        const errorMsg = err.response.data.msg; 
-        const field = errorMsg.split(" ")[0]; 
+        const errorMsg = err.response.data.msg;
+        const field = errorMsg.split(" ")[0];
         setErrors((prevErrors) => ({
-          ...prevErrors, 
-          [field]: errorMsg, 
+          ...prevErrors,
+          [field]: errorMsg,
         }));
       } else {
         console.log(err);

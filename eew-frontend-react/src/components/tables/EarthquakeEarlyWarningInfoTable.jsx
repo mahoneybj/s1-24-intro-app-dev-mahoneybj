@@ -51,7 +51,7 @@ const EarthquakeEarlyWarningInfoTable = () => {
     if (confirmDelete) {
       try {
         await earthquakeEarlyWarningSystemInstance.delete(`/eewinfo/${id}`);
-        setData(data.filter((item) => item.id !== id)); 
+        setData(data.filter((item) => item.id !== id));
       } catch (err) {
         console.log(err);
       }
@@ -59,18 +59,18 @@ const EarthquakeEarlyWarningInfoTable = () => {
   };
 
   const handleEdit = (item) => {
-    setEditItem(item); 
-    setModalOpen(true); 
+    setEditItem(item);
+    setModalOpen(true);
   };
 
-  const resetErrors = () => { 
+  const resetErrors = () => {
     setErrors({
-        alert_triggered: "",
-        date: "",
-        region: "",
-        duration: "",
-        accuracy: "",
-        earthquake_id: "",
+      alert_triggered: "",
+      date: "",
+      region: "",
+      duration: "",
+      accuracy: "",
+      earthquake_id: "",
       submitError: "",
     });
   };
@@ -78,7 +78,7 @@ const EarthquakeEarlyWarningInfoTable = () => {
   const handleEditFormSubmit = async (editedData) => {
     try {
       await earthquakeEarlyWarningSystemInstance.put(`/eewinfo/${editItem.id}`, editedData);
-      const updatedData = data.map((item) => 
+      const updatedData = data.map((item) =>
         item.id === editItem.id ? { ...item, ...editedData } : item
       );
       resetErrors();
@@ -88,11 +88,11 @@ const EarthquakeEarlyWarningInfoTable = () => {
     } catch (err) {
 
       if (err.response && err.response.data && err.response.data.msg) {
-        const errorMsg = err.response.data.msg; 
-        const field = errorMsg.split(" ")[0]; 
+        const errorMsg = err.response.data.msg;
+        const field = errorMsg.split(" ")[0];
         setErrors({
-          ...errors, 
-          [field]: errorMsg, 
+          ...errors,
+          [field]: errorMsg,
         });
       } else {
         console.log(err);
@@ -100,7 +100,7 @@ const EarthquakeEarlyWarningInfoTable = () => {
     }
   };
 
-  const handleFormSubmit = () => fetchData(); 
+  const handleFormSubmit = () => fetchData();
 
   return (
     <>
@@ -125,7 +125,7 @@ const EarthquakeEarlyWarningInfoTable = () => {
             <tbody>
               {data.length === 0 ? (
                 <tr>
-                  <td colSpan="8" className="text-center"> 
+                  <td colSpan="8" className="text-center">
                     No data available
                   </td>
                 </tr>
@@ -163,13 +163,13 @@ const EarthquakeEarlyWarningInfoTable = () => {
           <Modal
             isOpen={modalOpen}
             toggle={() => {
-              resetErrors(); 
+              resetErrors();
               setModalOpen(!modalOpen);
             }}
           >
             <ModalHeader
               toggle={() => {
-                resetErrors(); 
+                resetErrors();
                 setModalOpen(!modalOpen);
               }}
             >
@@ -188,7 +188,7 @@ const EarthquakeEarlyWarningInfoTable = () => {
                   <option>Select Alert Status</option>
                   <option value="true">True</option>
                   <option value="false">False</option>
-                  </Input>
+                </Input>
                 <FormFeedback>{errors.alert_triggered}</FormFeedback>
               </FormGroup>
               <FormGroup>
@@ -261,9 +261,9 @@ const EarthquakeEarlyWarningInfoTable = () => {
                     earthquake_id: parseInt(document.getElementById("editEarthquakeId").value, 10),
                   };
                   const alertStr = document.getElementById("editAlertTriggered").value;
-                  if(alertStr == "true"){
+                  if (alertStr == "true") {
                     editedData.alert_triggered = true;
-                  }else{
+                  } else {
                     editedData.alert_triggered = false;
                   }
                   handleEditFormSubmit(editedData);

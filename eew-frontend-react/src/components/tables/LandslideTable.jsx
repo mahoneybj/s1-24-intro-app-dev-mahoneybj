@@ -62,13 +62,13 @@ const LandslideTable = () => {
     setModalOpen(true); // Open the modal
   };
 
-  const resetErrors = () => { 
+  const resetErrors = () => {
     setErrors({
-        smallest: "",
-        largest: "",
-        region: "",
-        number: "",
-        earthquake_id: "",
+      smallest: "",
+      largest: "",
+      region: "",
+      number: "",
+      earthquake_id: "",
       submitError: "",
     });
   };
@@ -122,7 +122,7 @@ const LandslideTable = () => {
             <tbody>
               {data.length === 0 ? (
                 <tr>
-                  <td colSpan="7" className="text-center"> 
+                  <td colSpan="7" className="text-center">
                     No data available
                   </td>
                 </tr>

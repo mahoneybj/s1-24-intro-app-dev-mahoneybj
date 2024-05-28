@@ -35,7 +35,7 @@ const SensorInfoForm = ({ onFormSubmit }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     try {
       const payload = {
         location: formData.location,
@@ -45,9 +45,9 @@ const SensorInfoForm = ({ onFormSubmit }) => {
       };
 
       // Converting activate to boolean value
-      if(formData.activate == "true"){
+      if (formData.activate == "true") {
         payload.activate = true;
-      }else{
+      } else {
         payload.activate = false;
       }
 
@@ -67,15 +67,15 @@ const SensorInfoForm = ({ onFormSubmit }) => {
         earthquake_id: "",
         submitError: "",
       });
-      onFormSubmit(); 
+      onFormSubmit();
     } catch (err) {
-      
+
       if (err.response && err.response.data && err.response.data.msg) {
-        const errorMsg = err.response.data.msg; 
-        const field = errorMsg.split(" ")[0]; 
+        const errorMsg = err.response.data.msg;
+        const field = errorMsg.split(" ")[0];
         setErrors((prevErrors) => ({
-          ...prevErrors, 
-          [field]: errorMsg, 
+          ...prevErrors,
+          [field]: errorMsg,
         }));
       } else {
         console.log(err);
@@ -111,7 +111,7 @@ const SensorInfoForm = ({ onFormSubmit }) => {
       </FormGroup>
       <FormGroup>
         <Label for="sensor_type">Sensor Type:</Label>
-        
+
         <Input
           type="select"
           value={formData.sensor_type}

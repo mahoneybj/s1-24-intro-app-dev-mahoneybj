@@ -37,7 +37,7 @@ const EarthquakeEarlyWarningInfoForm = ({ onFormSubmit }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     try {
       const payload = {
         date: new Date(formData.date).toISOString(),
@@ -47,12 +47,12 @@ const EarthquakeEarlyWarningInfoForm = ({ onFormSubmit }) => {
         earthquake_id: parseInt(formData.earthquake_id, 10),
       };
 
-            // Converting activate to boolean value
-            if(formData.alert_triggered == "true"){
-              payload.alert_triggered = true;
-            }else{
-              payload.alert_triggered = false;
-            }
+      // Converting activate to boolean value
+      if (formData.alert_triggered == "true") {
+        payload.alert_triggered = true;
+      } else {
+        payload.alert_triggered = false;
+      }
 
       await earthquakeEarlyWarningSystemInstance.post("/eewinfo", payload);
       setFormData({
@@ -72,15 +72,15 @@ const EarthquakeEarlyWarningInfoForm = ({ onFormSubmit }) => {
         earthquake_id: "",
         submitError: "",
       });
-      onFormSubmit(); 
+      onFormSubmit();
     } catch (err) {
-      
+
       if (err.response && err.response.data && err.response.data.msg) {
-        const errorMsg = err.response.data.msg; 
-        const field = errorMsg.split(" ")[0]; 
+        const errorMsg = err.response.data.msg;
+        const field = errorMsg.split(" ")[0];
         setErrors((prevErrors) => ({
-          ...prevErrors, 
-          [field]: errorMsg, 
+          ...prevErrors,
+          [field]: errorMsg,
         }));
       } else {
         console.log(err);
@@ -103,7 +103,7 @@ const EarthquakeEarlyWarningInfoForm = ({ onFormSubmit }) => {
           <option>Alert triggered?</option>
           <option value="true">True</option>
           <option value="false">False</option>
-        </Input> 
+        </Input>
         <FormFeedback>{errors.alert_triggered}</FormFeedback>
       </FormGroup>
       <FormGroup>

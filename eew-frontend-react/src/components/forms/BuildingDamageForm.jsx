@@ -37,7 +37,7 @@ const BuildingDamageForm = ({ onFormSubmit }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     try {
       const payload = {
         houses_damaged: parseInt(formData.houses_damaged, 10),
@@ -66,15 +66,15 @@ const BuildingDamageForm = ({ onFormSubmit }) => {
         cost: "",
         submitError: "",
       });
-      onFormSubmit(); 
+      onFormSubmit();
     } catch (err) {
-      
+
       if (err.response && err.response.data && err.response.data.msg) {
-        const errorMsg = err.response.data.msg; 
-        const field = errorMsg.split(" ")[0]; 
+        const errorMsg = err.response.data.msg;
+        const field = errorMsg.split(" ")[0];
         setErrors((prevErrors) => ({
-          ...prevErrors, 
-          [field]: errorMsg, 
+          ...prevErrors,
+          [field]: errorMsg,
         }));
       } else {
         console.log(err);

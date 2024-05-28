@@ -35,7 +35,7 @@ const LandslideForm = ({ onFormSubmit }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     try {
       const payload = {
         smallest: parseFloat(formData.smallest),
@@ -61,15 +61,15 @@ const LandslideForm = ({ onFormSubmit }) => {
         earthquake_id: "",
         submitError: "",
       });
-      onFormSubmit(); 
+      onFormSubmit();
     } catch (err) {
-      
+
       if (err.response && err.response.data && err.response.data.msg) {
-        const errorMsg = err.response.data.msg; 
-        const field = errorMsg.split(" ")[0]; 
+        const errorMsg = err.response.data.msg;
+        const field = errorMsg.split(" ")[0];
         setErrors((prevErrors) => ({
-          ...prevErrors, 
-          [field]: errorMsg, 
+          ...prevErrors,
+          [field]: errorMsg,
         }));
       } else {
         console.log(err);

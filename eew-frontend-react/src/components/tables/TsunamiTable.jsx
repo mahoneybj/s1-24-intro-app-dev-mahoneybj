@@ -62,13 +62,13 @@ const TsunamiTable = () => {
     setModalOpen(true); // Open the modal
   };
 
-  const resetErrors = () => { 
+  const resetErrors = () => {
     setErrors({
-        region: "",
-        date: "",
-        size: "",
-        duration: "",
-        earthquake_id: "",
+      region: "",
+      date: "",
+      size: "",
+      duration: "",
+      earthquake_id: "",
       submitError: "",
     });
   };
@@ -122,7 +122,7 @@ const TsunamiTable = () => {
             <tbody>
               {data.length === 0 ? (
                 <tr>
-                  <td colSpan="7" className="text-center"> 
+                  <td colSpan="7" className="text-center">
                     No data available
                   </td>
                 </tr>
@@ -197,7 +197,7 @@ const TsunamiTable = () => {
               <FormGroup>
                 <Label for="editSize">Size:</Label>
                 <Input
-                  type="number"          
+                  type="number"
                   step="0.1"
                   defaultValue={editItem?.size}
                   id="editSize"

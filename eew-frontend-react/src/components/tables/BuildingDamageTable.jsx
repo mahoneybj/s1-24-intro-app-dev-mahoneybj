@@ -63,14 +63,14 @@ const BuildingDamageTable = () => {
     setModalOpen(true); // Open the modal
   };
 
-  const resetErrors = () => { 
+  const resetErrors = () => {
     setErrors({
-        houses_damaged: "",
-        houses_destroyed: "",
-        commerical_damaged: "",
-        commerical_destroyed: "",
-        earthquake_id: "",
-        cost: "",
+      houses_damaged: "",
+      houses_destroyed: "",
+      commerical_damaged: "",
+      commerical_destroyed: "",
+      earthquake_id: "",
+      cost: "",
       submitError: "",
     });
   };
@@ -125,7 +125,7 @@ const BuildingDamageTable = () => {
             <tbody>
               {data.length === 0 ? (
                 <tr>
-                  <td colSpan="8" className="text-center"> 
+                  <td colSpan="8" className="text-center">
                     No data available
                   </td>
                 </tr>

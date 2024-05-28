@@ -64,7 +64,7 @@ const EarthquakeTable = () => {
     setModalOpen(true); // Open the modal
   };
 
-  const resetErrors = () => { 
+  const resetErrors = () => {
     setErrors({
       date: "",
       magnitude: "",
@@ -128,7 +128,7 @@ const EarthquakeTable = () => {
             <tbody>
               {data.length === 0 ? (
                 <tr>
-                  <td colSpan="9" className="text-center"> 
+                  <td colSpan="9" className="text-center">
                     No data available
                   </td>
                 </tr>

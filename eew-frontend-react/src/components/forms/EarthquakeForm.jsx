@@ -42,19 +42,19 @@ const EarthquakeForm = ({ onFormSubmit }) => {
   // This function is called when the form is submitted
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission
-      try {
-        const payload = {
-          date: new Date(formData.date).toISOString(),
-          magnitude: parseFloat(formData.magnitude),
-          depth: parseFloat(formData.depth, 10),
-          duration: parseFloat(formData.duration),
-          intensity: parseInt(formData.intensity),
-          fault_line: formData.fault_line,
-        };
+    try {
+      const payload = {
+        date: new Date(formData.date).toISOString(),
+        magnitude: parseFloat(formData.magnitude),
+        depth: parseFloat(formData.depth, 10),
+        duration: parseFloat(formData.duration),
+        intensity: parseInt(formData.intensity),
+        fault_line: formData.fault_line,
+      };
 
-        if (formData.after_shock_id) {
-          payload.after_shock_id = parseInt(formData.after_shock_id, 10);
-        }
+      if (formData.after_shock_id) {
+        payload.after_shock_id = parseInt(formData.after_shock_id, 10);
+      }
 
       await earthquakeEarlyWarningSystemInstance.post("/earthquakes", payload);
       setFormData({
