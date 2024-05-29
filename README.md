@@ -72,8 +72,8 @@ npm test
 
 ## Debugging
 Some debugging steps when things arn't working as it should
+This command resets the database
 ```bash
-// This command resets the database
 npx prisma migrate reset 
 ```
 Prisma studio allows you to view each table and all the data in a web app
