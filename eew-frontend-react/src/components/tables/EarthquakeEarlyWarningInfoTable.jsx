@@ -42,7 +42,9 @@ const EarthquakeEarlyWarningInfoTable = () => {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const res = await earthquakeEarlyWarningSystemInstance.get("/eewinfo?amount=100");
+      const res = await earthquakeEarlyWarningSystemInstance.get(
+        "/eewinfo?amount=100",
+      );
       setData(res.data.data);
     } catch (err) {
       console.log(err);
@@ -52,7 +54,9 @@ const EarthquakeEarlyWarningInfoTable = () => {
   };
 
   const handleDelete = async (id) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this item?");
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this item?",
+    );
     if (confirmDelete) {
       try {
         await earthquakeEarlyWarningSystemInstance.delete(`/eewinfo/${id}`);
@@ -82,16 +86,18 @@ const EarthquakeEarlyWarningInfoTable = () => {
 
   const handleEditFormSubmit = async (editedData) => {
     try {
-      await earthquakeEarlyWarningSystemInstance.put(`/eewinfo/${editItem.id}`, editedData);
+      await earthquakeEarlyWarningSystemInstance.put(
+        `/eewinfo/${editItem.id}`,
+        editedData,
+      );
       const updatedData = data.map((item) =>
-        item.id === editItem.id ? { ...item, ...editedData } : item
+        item.id === editItem.id ? { ...item, ...editedData } : item,
       );
       resetErrors();
       setData(updatedData);
       setModalOpen(false);
       setEditItem(null);
     } catch (err) {
-
       if (err.response && err.response.data && err.response.data.msg) {
         const errorMsg = err.response.data.msg;
         const field = errorMsg.split(" ")[0];
@@ -258,14 +264,25 @@ const EarthquakeEarlyWarningInfoTable = () => {
                 color="primary"
                 onClick={() => {
                   const editedData = {
-                    alert_triggered: document.getElementById("editAlertTriggered").value,
-                    date: new Date(document.getElementById("editDate").value).toISOString(),
+                    alert_triggered:
+                      document.getElementById("editAlertTriggered").value,
+                    date: new Date(
+                      document.getElementById("editDate").value,
+                    ).toISOString(),
                     region: document.getElementById("editRegion").value,
-                    duration: parseFloat(document.getElementById("editDuration").value),
-                    accuracy: parseFloat(document.getElementById("editAccuracy").value),
-                    earthquake_id: parseInt(document.getElementById("editEarthquakeId").value, 10),
+                    duration: parseFloat(
+                      document.getElementById("editDuration").value,
+                    ),
+                    accuracy: parseFloat(
+                      document.getElementById("editAccuracy").value,
+                    ),
+                    earthquake_id: parseInt(
+                      document.getElementById("editEarthquakeId").value,
+                      10,
+                    ),
                   };
-                  const alertStr = document.getElementById("editAlertTriggered").value;
+                  const alertStr =
+                    document.getElementById("editAlertTriggered").value;
                   if (alertStr == "true") {
                     editedData.alert_triggered = true;
                   } else {

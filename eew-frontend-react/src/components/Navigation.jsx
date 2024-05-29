@@ -24,7 +24,6 @@ import TsunamiTable from "./tables/TsunamiTable";
 import LandslideTable from "./tables/LandslideTable";
 import SensorInfoTable from "./tables/SensorInfoTable";
 
-
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 

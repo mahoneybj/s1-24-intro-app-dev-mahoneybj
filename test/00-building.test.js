@@ -125,7 +125,7 @@ describe("Building Damage", () => {
         chai
           .expect(res.body.msg)
           .to.be.equal(
-            "Building damage log with the id: 1 successfully deleted"
+            "Building damage log with the id: 1 successfully deleted",
           );
         done();
       });

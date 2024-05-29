@@ -42,7 +42,9 @@ const BuildingDamageTable = () => {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const res = await earthquakeEarlyWarningSystemInstance.get("/buildings?amount=100");
+      const res = await earthquakeEarlyWarningSystemInstance.get(
+        "/buildings?amount=100",
+      );
       setData(res.data.data);
     } catch (err) {
       console.log(err);
@@ -52,7 +54,9 @@ const BuildingDamageTable = () => {
   };
 
   const handleDelete = async (id) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this item?");
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this item?",
+    );
     if (confirmDelete) {
       try {
         await earthquakeEarlyWarningSystemInstance.delete(`/buildings/${id}`);
@@ -82,9 +86,14 @@ const BuildingDamageTable = () => {
 
   const handleEditFormSubmit = async (editedData) => {
     try {
-      await earthquakeEarlyWarningSystemInstance.put(`/buildings/${editItem.id}`, editedData);
-      const updatedData = data.map((item) => // Update the item in the data array
-        item.id === editItem.id ? { ...item, ...editedData } : item
+      await earthquakeEarlyWarningSystemInstance.put(
+        `/buildings/${editItem.id}`,
+        editedData,
+      );
+      const updatedData = data.map(
+        (
+          item, // Update the item in the data array
+        ) => (item.id === editItem.id ? { ...item, ...editedData } : item),
       );
       resetErrors();
       setData(updatedData);
@@ -215,7 +224,9 @@ const BuildingDamageTable = () => {
                 <FormFeedback>{errors.commerical_damaged}</FormFeedback>
               </FormGroup>
               <FormGroup>
-                <Label for="editCommericalDestroyed">Commerical Destroyed:</Label>
+                <Label for="editCommericalDestroyed">
+                  Commerical Destroyed:
+                </Label>
                 <Input
                   type="number"
                   defaultValue={editItem?.commerical_destroyed}
@@ -254,11 +265,26 @@ const BuildingDamageTable = () => {
                 color="primary"
                 onClick={() =>
                   handleEditFormSubmit({
-                    houses_damaged: parseInt(document.getElementById("editHousesDamaged").value, 10),
-                    houses_destroyed: parseInt(document.getElementById("editHousesDestroyed").value, 10),
-                    commerical_damaged: parseInt(document.getElementById("editCommericalDamaged").value, 10),
-                    commerical_destroyed: parseInt(document.getElementById("editCommericalDestroyed").value, 10),
-                    earthquake_id: parseInt(document.getElementById("editEarthquakeId").value, 10),
+                    houses_damaged: parseInt(
+                      document.getElementById("editHousesDamaged").value,
+                      10,
+                    ),
+                    houses_destroyed: parseInt(
+                      document.getElementById("editHousesDestroyed").value,
+                      10,
+                    ),
+                    commerical_damaged: parseInt(
+                      document.getElementById("editCommericalDamaged").value,
+                      10,
+                    ),
+                    commerical_destroyed: parseInt(
+                      document.getElementById("editCommericalDestroyed").value,
+                      10,
+                    ),
+                    earthquake_id: parseInt(
+                      document.getElementById("editEarthquakeId").value,
+                      10,
+                    ),
                     cost: parseFloat(document.getElementById("editCost").value),
                   })
                 }

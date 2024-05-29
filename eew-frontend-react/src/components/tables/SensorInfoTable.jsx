@@ -3,7 +3,6 @@
  * @author Ben Mahoney
  */
 
-
 import { useEffect, useState } from "react";
 import {
   Table,
@@ -42,7 +41,9 @@ const SensorInfoTable = () => {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const res = await earthquakeEarlyWarningSystemInstance.get("/sensorinfo?amount=100");
+      const res = await earthquakeEarlyWarningSystemInstance.get(
+        "/sensorinfo?amount=100",
+      );
       setData(res.data.data);
     } catch (err) {
       console.log(err);
@@ -52,7 +53,9 @@ const SensorInfoTable = () => {
   };
 
   const handleDelete = async (id) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this item?");
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this item?",
+    );
     if (confirmDelete) {
       try {
         await earthquakeEarlyWarningSystemInstance.delete(`/sensorinfo/${id}`);
@@ -81,9 +84,14 @@ const SensorInfoTable = () => {
 
   const handleEditFormSubmit = async (editedData) => {
     try {
-      await earthquakeEarlyWarningSystemInstance.put(`/sensorinfo/${editItem.id}`, editedData);
-      const updatedData = data.map((item) => // Update the item in the data array
-        item.id === editItem.id ? { ...item, ...editedData } : item
+      await earthquakeEarlyWarningSystemInstance.put(
+        `/sensorinfo/${editItem.id}`,
+        editedData,
+      );
+      const updatedData = data.map(
+        (
+          item, // Update the item in the data array
+        ) => (item.id === editItem.id ? { ...item, ...editedData } : item),
       );
       resetErrors();
       setData(updatedData);
@@ -250,11 +258,16 @@ const SensorInfoTable = () => {
                   const editedData = {
                     location: document.getElementById("editLocation").value,
                     region: document.getElementById("editRegion").value,
-                    sensor_type: document.getElementById("editSensorType").value,
+                    sensor_type:
+                      document.getElementById("editSensorType").value,
                     activate: document.getElementById("editActivate").value,
-                    earthquake_id: parseInt(document.getElementById("editEarthquakeId").value, 10),
+                    earthquake_id: parseInt(
+                      document.getElementById("editEarthquakeId").value,
+                      10,
+                    ),
                   };
-                  const activateStr = document.getElementById("editActivate").value;
+                  const activateStr =
+                    document.getElementById("editActivate").value;
                   if (activateStr == "true") {
                     editedData.activate = true;
                   } else {

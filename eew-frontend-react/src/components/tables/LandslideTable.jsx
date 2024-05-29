@@ -3,7 +3,6 @@
  * @author Ben Mahoney
  */
 
-
 import { useEffect, useState } from "react";
 import {
   Table,
@@ -42,7 +41,9 @@ const LandslideTable = () => {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const res = await earthquakeEarlyWarningSystemInstance.get("/landslides?amount=100");
+      const res = await earthquakeEarlyWarningSystemInstance.get(
+        "/landslides?amount=100",
+      );
       setData(res.data.data);
     } catch (err) {
       console.log(err);
@@ -52,7 +53,9 @@ const LandslideTable = () => {
   };
 
   const handleDelete = async (id) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this item?");
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this item?",
+    );
     if (confirmDelete) {
       try {
         await earthquakeEarlyWarningSystemInstance.delete(`/landslides/${id}`);
@@ -81,9 +84,14 @@ const LandslideTable = () => {
 
   const handleEditFormSubmit = async (editedData) => {
     try {
-      await earthquakeEarlyWarningSystemInstance.put(`/landslides/${editItem.id}`, editedData);
-      const updatedData = data.map((item) => // Update the item in the data array
-        item.id === editItem.id ? { ...item, ...editedData } : item
+      await earthquakeEarlyWarningSystemInstance.put(
+        `/landslides/${editItem.id}`,
+        editedData,
+      );
+      const updatedData = data.map(
+        (
+          item, // Update the item in the data array
+        ) => (item.id === editItem.id ? { ...item, ...editedData } : item),
       );
       resetErrors();
       setData(updatedData);
@@ -241,11 +249,21 @@ const LandslideTable = () => {
                 color="primary"
                 onClick={() =>
                   handleEditFormSubmit({
-                    smallest: parseFloat(document.getElementById("editSmallest").value),
-                    largest: parseFloat(document.getElementById("editLargest").value),
+                    smallest: parseFloat(
+                      document.getElementById("editSmallest").value,
+                    ),
+                    largest: parseFloat(
+                      document.getElementById("editLargest").value,
+                    ),
                     region: document.getElementById("editRegion").value,
-                    number: parseInt(document.getElementById("editNumber").value, 10),
-                    earthquake_id: parseInt(document.getElementById("editEarthquakeId").value, 10),
+                    number: parseInt(
+                      document.getElementById("editNumber").value,
+                      10,
+                    ),
+                    earthquake_id: parseInt(
+                      document.getElementById("editEarthquakeId").value,
+                      10,
+                    ),
                   })
                 }
               >

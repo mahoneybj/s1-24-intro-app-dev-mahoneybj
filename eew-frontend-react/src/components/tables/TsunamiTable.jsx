@@ -3,7 +3,6 @@
  * @author Ben Mahoney
  */
 
-
 import { useEffect, useState } from "react";
 import {
   Table,
@@ -42,7 +41,9 @@ const TsunamiTable = () => {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const res = await earthquakeEarlyWarningSystemInstance.get("/tsunamis?amount=100");
+      const res = await earthquakeEarlyWarningSystemInstance.get(
+        "/tsunamis?amount=100",
+      );
       setData(res.data.data);
     } catch (err) {
       console.log(err);
@@ -52,7 +53,9 @@ const TsunamiTable = () => {
   };
 
   const handleDelete = async (id) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this item?");
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this item?",
+    );
     if (confirmDelete) {
       try {
         await earthquakeEarlyWarningSystemInstance.delete(`/tsunamis/${id}`);
@@ -81,9 +84,14 @@ const TsunamiTable = () => {
 
   const handleEditFormSubmit = async (editedData) => {
     try {
-      await earthquakeEarlyWarningSystemInstance.put(`/tsunamis/${editItem.id}`, editedData);
-      const updatedData = data.map((item) => // Update the item in the data array
-        item.id === editItem.id ? { ...item, ...editedData } : item
+      await earthquakeEarlyWarningSystemInstance.put(
+        `/tsunamis/${editItem.id}`,
+        editedData,
+      );
+      const updatedData = data.map(
+        (
+          item, // Update the item in the data array
+        ) => (item.id === editItem.id ? { ...item, ...editedData } : item),
       );
       resetErrors();
       setData(updatedData);
@@ -242,10 +250,17 @@ const TsunamiTable = () => {
                 onClick={() =>
                   handleEditFormSubmit({
                     region: document.getElementById("editRegion").value,
-                    date: new Date(document.getElementById("editDate").value).toISOString(),
+                    date: new Date(
+                      document.getElementById("editDate").value,
+                    ).toISOString(),
                     size: parseFloat(document.getElementById("editSize").value),
-                    duration: parseFloat(document.getElementById("editDuration").value),
-                    earthquake_id: parseInt(document.getElementById("editEarthquakeId").value, 10),
+                    duration: parseFloat(
+                      document.getElementById("editDuration").value,
+                    ),
+                    earthquake_id: parseInt(
+                      document.getElementById("editEarthquakeId").value,
+                      10,
+                    ),
                   })
                 }
               >

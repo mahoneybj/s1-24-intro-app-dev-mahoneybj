@@ -117,11 +117,9 @@ const getBuilding = async (req, res) => {
     });
 
     if (!building) {
-      return res
-        .status(404)
-        .json({
-          msg: `No building damage with the id: ${req.params.id} found`,
-        });
+      return res.status(404).json({
+        msg: `No building damage with the id: ${req.params.id} found`,
+      });
     }
 
     return res.json({
@@ -148,11 +146,9 @@ const updateBuilding = async (req, res) => {
     });
 
     if (!building) {
-      return res
-        .status(404)
-        .json({
-          msg: `No building damage logs with the id: ${req.params.id} found`,
-        });
+      return res.status(404).json({
+        msg: `No building damage logs with the id: ${req.params.id} found`,
+      });
     }
 
     building = await prisma.BuildingDamage.update({
@@ -178,11 +174,9 @@ const deleteBuilding = async (req, res) => {
     });
 
     if (!building) {
-      return res
-        .status(404)
-        .json({
-          msg: `No building damage with the id: ${req.params.id} found`,
-        });
+      return res.status(404).json({
+        msg: `No building damage with the id: ${req.params.id} found`,
+      });
     }
 
     await prisma.BuildingDamage.delete({

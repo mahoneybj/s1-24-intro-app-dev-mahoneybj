@@ -74,7 +74,6 @@ const SensorInfoForm = ({ onFormSubmit }) => {
       });
       onFormSubmit();
     } catch (err) {
-
       if (err.response && err.response.data && err.response.data.msg) {
         const errorMsg = err.response.data.msg;
         const field = errorMsg.split(" ")[0];

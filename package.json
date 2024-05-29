@@ -11,7 +11,8 @@
     "localdatabase": "npm run dev",
     "localapp": "cd eew-frontend-react/ && npm run dev -- --open",
     "apply": "npx prisma migrate dev",
-    "reset": "npx prisma migrate reset"
+    "reset": "npx prisma migrate reset",
+    "format": "npx prettier . --write"
   },
   "prisma": {
     "seed": "node prisma/seed.js"

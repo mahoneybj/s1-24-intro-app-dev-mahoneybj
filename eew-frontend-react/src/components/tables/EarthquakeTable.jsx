@@ -43,7 +43,9 @@ const EarthquakeTable = () => {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const res = await earthquakeEarlyWarningSystemInstance.get("/earthquakes?amount=100");
+      const res = await earthquakeEarlyWarningSystemInstance.get(
+        "/earthquakes?amount=100",
+      );
       setData(res.data.data);
     } catch (err) {
       console.log(err);
@@ -53,7 +55,9 @@ const EarthquakeTable = () => {
   };
 
   const handleDelete = async (id) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this item?");
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this item?",
+    );
     if (confirmDelete) {
       try {
         await earthquakeEarlyWarningSystemInstance.delete(`/earthquakes/${id}`);
@@ -84,9 +88,14 @@ const EarthquakeTable = () => {
 
   const handleEditFormSubmit = async (editedData) => {
     try {
-      await earthquakeEarlyWarningSystemInstance.put(`/earthquakes/${editItem.id}`, editedData);
-      const updatedData = data.map((item) => // Update the item in the data array
-        item.id === editItem.id ? { ...item, ...editedData } : item
+      await earthquakeEarlyWarningSystemInstance.put(
+        `/earthquakes/${editItem.id}`,
+        editedData,
+      );
+      const updatedData = data.map(
+        (
+          item, // Update the item in the data array
+        ) => (item.id === editItem.id ? { ...item, ...editedData } : item),
       );
       resetErrors();
       setData(updatedData);
@@ -271,14 +280,26 @@ const EarthquakeTable = () => {
                 color="primary"
                 onClick={() => {
                   const editedData = {
-                    date: new Date(document.getElementById("editDate").value).toISOString(),
-                    magnitude: parseFloat(document.getElementById("editMagnitude").value),
-                    depth: parseFloat(document.getElementById("editDepth").value),
-                    duration: parseFloat(document.getElementById("editDuration").value),
-                    intensity: parseInt(document.getElementById("editIntensity").value, 10),
+                    date: new Date(
+                      document.getElementById("editDate").value,
+                    ).toISOString(),
+                    magnitude: parseFloat(
+                      document.getElementById("editMagnitude").value,
+                    ),
+                    depth: parseFloat(
+                      document.getElementById("editDepth").value,
+                    ),
+                    duration: parseFloat(
+                      document.getElementById("editDuration").value,
+                    ),
+                    intensity: parseInt(
+                      document.getElementById("editIntensity").value,
+                      10,
+                    ),
                     fault_line: document.getElementById("editFaultLine").value,
                   };
-                  const afterShockId = document.getElementById("editAfterShockId").value;
+                  const afterShockId =
+                    document.getElementById("editAfterShockId").value;
                   if (afterShockId) {
                     editedData.after_shock_id = afterShockId;
                   }
