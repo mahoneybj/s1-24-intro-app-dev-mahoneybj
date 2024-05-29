@@ -76,28 +76,28 @@ const getEarthquakes = async (req, res) => {
     ) {
       query.where = {
         id: {
-          equals: req.query.id || undefined,
+          equals: Number(req.query.id) || undefined,
         },
         date: {
-          equals: req.query.date || undefined,
+          equals: Date(req.query.date) || undefined,
         },
         magnitude: {
-          equals: req.query.magnitude || undefined,
+          equals: Number(req.query.magnitude) || undefined,
         },
         depth: {
-          equals: req.query.depth || undefined,
+          equals: Number(req.query.depth) || undefined,
         },
         duration: {
-          equals: req.query.duration || undefined,
+          equals: Number(req.query.duration) || undefined,
         },
         intensity: {
-          equals: req.query.intensity || undefined,
+          equals: Number(req.query.intensity) || undefined,
         },
         fault_line: {
           equals: req.query.fault_line || undefined,
         },
         after_shock_id: {
-          equals: req.query.after_shock_id || undefined,
+          equals: Number(req.query.after_shock_id) || undefined,
         },
       };
     }
