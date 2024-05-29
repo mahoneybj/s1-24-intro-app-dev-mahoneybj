@@ -71,7 +71,7 @@ const getSensorinfos = async (req, res) => {
     ) {
       query.where = {
         id: {
-          equals: req.query.id || undefined,
+          equals: Number(req.query.id) || undefined,
         },
         location: {
           equals: req.query.location || undefined,
@@ -83,7 +83,7 @@ const getSensorinfos = async (req, res) => {
           equals: req.query.sensor_type || undefined,
         },
         activate: {
-          equals: req.query.activate || undefined,
+          equals: Boolean(req.query.activate) || undefined,
         },
       };
     }
