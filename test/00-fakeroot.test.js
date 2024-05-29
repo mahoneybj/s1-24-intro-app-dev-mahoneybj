@@ -17,7 +17,8 @@ describe("Fake root", () => {
       .request(app)
       .get("/api/fake")
       .end((req, res) => {
-        chai.expect(res.status).to.be.equal(404);
+        chai.expect(res.status).to.be.equal(404)
+        chai.expect(res.body.msg).to.be.equal("Endpoint does not exist");
         done();
       });
   });
