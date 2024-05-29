@@ -4,6 +4,8 @@
  */
 
 import Joi from "joi";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
 const validatePostEarthquake = (req, res, next) => {
   const earthquakeSchema = Joi.object({
@@ -61,7 +63,7 @@ const validatePostEarthquake = (req, res, next) => {
   next();
 };
 
-const validatePostBuilding = (req, res, next) => {
+const validatePostBuilding = async (req, res, next) => {
   const buildingSchema = Joi.object({
     houses_damaged: Joi.number().required().messages({
       "number.base": "houses damaged should be a int",
@@ -101,10 +103,20 @@ const validatePostBuilding = (req, res, next) => {
     });
   }
 
+  try {
+    const earthquake = await prisma.earthquake.findUnique({
+      where: { id: req.body.earthquake_id },
+    });
+    if (!earthquake) {
+      return res.status(404).json({ error: 'earthquake by that id does not exist' });
+    }
+  } catch (err) {
+  }
+
   next();
 };
 
-const validatePostTsunami = (req, res, next) => {
+const validatePostTsunami = async (req, res, next) => {
   const tsunamiSchema = Joi.object({
     region: Joi.string().required().messages({
       "string.base": "region should be a string",
@@ -137,6 +149,16 @@ const validatePostTsunami = (req, res, next) => {
     return res.status(400).json({
       msg: error.details[0].message,
     });
+  }
+
+  try {
+    const earthquake = await prisma.earthquake.findUnique({
+      where: { id: req.body.earthquake_id },
+    });
+    if (!earthquake) {
+      return res.status(404).json({ error: 'earthquake by that id does not exist' });
+    }
+  } catch (err) {
   }
 
   next();
@@ -193,7 +215,7 @@ const validatePostEEWInfo = (req, res, next) => {
   next();
 };
 
-const validatePostLandslide = (req, res, next) => {
+const validatePostLandslide = async (req, res, next) => {
   const landslideSchema = Joi.object({
     smallest: Joi.number().precision(1).required().messages({
       "number.base": "Smallest landslide should be a decimal",
@@ -236,10 +258,20 @@ const validatePostLandslide = (req, res, next) => {
     });
   }
 
+  try {
+    const earthquake = await prisma.earthquake.findUnique({
+      where: { id: req.body.earthquake_id },
+    });
+    if (!earthquake) {
+      return res.status(404).json({ error: 'earthquake by that id does not exist' });
+    }
+  } catch (err) {
+  }
+
   next();
 };
 
-const validatePostSensorInfo = (req, res, next) => {
+const validatePostSensorInfo = async (req, res, next) => {
   const sensorinfoSchema = Joi.object({
     location: Joi.string().required().messages({
       "string.base": "Location should be a string",
@@ -276,6 +308,15 @@ const validatePostSensorInfo = (req, res, next) => {
     return res.status(400).json({
       msg: error.details[0].message,
     });
+  }
+  try {
+    const earthquake = await prisma.earthquake.findUnique({
+      where: { id: req.body.earthquake_id },
+    });
+    if (!earthquake) {
+      return res.status(404).json({ error: 'earthquake by that id does not exist' });
+    }
+  } catch (err) {
   }
 
   next();
