@@ -71,6 +71,10 @@ app.use("/api/sensorinfo", sensorinfoRoutes);
 
 app.use("/api/tsunamis", tsunamiRoutes);
 
+app.get("*", (req, res) => {
+  res.status(404).json({ msg: "Endpoint does not exist" });
+});
+
 // Start the server on port 3000
 app.listen(3000, () => {
   console.log("Server is listening on port 3000.");
