@@ -1,3 +1,8 @@
+/**
+ * @file Building damage report form component.
+ * @author Ben Mahoney
+ */
+
 import { useState } from "react";
 import {
   Button,

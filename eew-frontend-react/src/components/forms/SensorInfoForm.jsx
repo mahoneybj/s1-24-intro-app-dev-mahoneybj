@@ -1,3 +1,8 @@
+/**
+ * @file Sensor info form component.
+ * @author Ben Mahoney
+ */
+
 import { useState } from "react";
 import {
   Button,

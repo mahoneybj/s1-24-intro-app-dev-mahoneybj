@@ -1,3 +1,8 @@
+/**
+ * @file Landslide infomation form component.
+ * @author Ben Mahoney
+ */
+
 import { useState } from "react";
 import {
   Button,
