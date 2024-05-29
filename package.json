@@ -6,7 +6,12 @@
   "type": "module",
   "scripts": {
     "test": "npx prisma migrate reset --force && mocha --timeout 10000 --exit",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "studio": "npx prisma studio",
+    "localdatabase": "npm run dev",
+    "localapp": "cd eew-frontend-react/ && npm run dev -- --open",
+    "apply": "npx prisma migrate dev",
+    "reset": "npx prisma migrate reset"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
