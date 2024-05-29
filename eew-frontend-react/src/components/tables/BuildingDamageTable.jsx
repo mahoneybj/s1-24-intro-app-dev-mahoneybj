@@ -1,3 +1,8 @@
+/**
+ * @file Building damage report table component.
+ * @author Ben Mahoney
+ */
+
 import { useEffect, useState } from "react";
 import {
   Table,

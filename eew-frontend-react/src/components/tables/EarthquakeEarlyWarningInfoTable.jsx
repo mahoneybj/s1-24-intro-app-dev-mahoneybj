@@ -1,3 +1,8 @@
+/**
+ * @file EEW info table component.
+ * @author [Your Name Here]
+ */
+
 import { useEffect, useState } from "react";
 import {
   Table,

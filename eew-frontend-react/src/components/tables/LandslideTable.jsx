@@ -1,3 +1,9 @@
+/**
+ * @file Landslide info table component.
+ * @author Ben Mahoney
+ */
+
+
 import { useEffect, useState } from "react";
 import {
   Table,
