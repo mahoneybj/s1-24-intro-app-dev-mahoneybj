@@ -73,25 +73,25 @@ const getBuildings = async (req, res) => {
     ) {
       query.where = {
         id: {
-          equals: req.query.id || undefined,
+          equals: Number(req.query.id) || undefined,
         },
         houses_damaged: {
-          equals: req.query.houses_damaged || undefined,
+          equals: Number(req.query.houses_damaged) || undefined,
         },
         houses_destroyed: {
-          equals: req.query.houses_destroyed || undefined,
+          equals: Number(req.query.houses_destroyed) || undefined,
         },
         commerical_damaged: {
-          equals: req.query.commerical_damaged || undefined,
+          equals: Number(req.query.commerical_damaged) || undefined,
         },
         commerical_destroyed: {
-          equals: req.query.commerical_destroyed || undefined,
+          equals: Number(req.query.commerical_destroyed) || undefined,
         },
         earthquake_id: {
-          equals: req.query.earthquake_id || undefined, // Corrected reference to earthquake_id
+          equals: Number(req.query.earthquake_id) || undefined, // Corrected reference to earthquake_id
         },
         cost: {
-          equals: req.query.cost || undefined, // Corrected reference to cost
+          equals: Number(req.query.cost) || undefined, // Corrected reference to cost
         },
       };
     }
