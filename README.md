@@ -108,10 +108,9 @@ npx prisma studio
 ```
 
 ## How to format code
-
-- CONTROL + SHIFT + P
-- Type in 'format document' in the vs code search
-- Press enter
+```
+npm run format
+```
 
 ## API table ERD
 
