@@ -12,6 +12,7 @@ Rest API using Express and node.js. Earthquake early warning API used to access 
 - [Seeding the Database](#seeding-the-database)
 - [Running Chai and Mocha tests](#running-chai-and-mocha-tests)
 - [Debugging](#debugging)
+- [How to format code](#how-to-format-code)
 - [API table ERD](#api-table-erd)
 
 ## API Link
@@ -80,6 +81,11 @@ Prisma studio allows you to view each table and all the data in a web app
 ```bash
 npx prisma studio
 ```
+
+## How to format code
+- CONTROL + SHIFT + P
+- Type in 'format document' in the vs code search
+- Press enter
 
 ## API table ERD
 ![ERD](https://github.com/otago-polytechnic-bit-courses/s1-24-intro-app-dev-mahoneybj/assets/65274137/158f93e5-1acc-4dc8-9ca2-ebeec13af113)
