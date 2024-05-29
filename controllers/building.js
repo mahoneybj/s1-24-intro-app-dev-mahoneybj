@@ -63,13 +63,13 @@ const getBuildings = async (req, res) => {
     };
 
     if (
-      Number(req.query.id) ||
-      Number(req.query.houses_damaged) ||
-      Number(req.query.houses_destroyed) ||
-      Number(req.query.commerical_damaged) ||
-      Number(req.query.commerical_destroyed) ||
-      Number(req.query.earthquake_id) ||
-      Number(req.query.cost)
+      req.query.id ||
+      req.query.houses_damaged ||
+      req.query.houses_destroyed ||
+      req.query.commerical_damaged ||
+      req.query.commerical_destroyed ||
+      req.query.earthquake_id ||
+      req.query.cost
     ) {
       query.where = {
         id: {

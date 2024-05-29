@@ -62,12 +62,12 @@ const getSensorinfos = async (req, res) => {
     };
 
     if (
-      Number(req.query.id) ||
+      req.query.id ||
       req.query.location ||
       req.query.region ||
       req.query.sensor_type ||
-      Boolean(req.query.activate) ||
-      Number(req.query.earthquake_id)
+      req.query.activate ||
+      req.query.earthquake_id
     ) {
       query.where = {
         id: {

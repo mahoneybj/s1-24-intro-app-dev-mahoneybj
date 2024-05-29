@@ -64,13 +64,13 @@ const getEEWInfos = async (req, res) => {
     };
 
     if (
-      Number(req.query.id) ||
-      Boolean(req.query.alert_triggered) ||
-      Date(req.query.date) ||
+      req.query.id ||
+      req.query.alert_triggered ||
+      req.query.date ||
       req.query.region ||
-      Number(req.query.duration) ||
-      Number(req.query.accuracy) ||
-      Number(req.query.earthquake_id)
+      req.query.duration ||
+      req.query.accuracy ||
+      req.query.earthquake_id
     ) {
       query.where = {
         id: {
