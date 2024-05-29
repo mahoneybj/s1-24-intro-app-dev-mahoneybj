@@ -72,22 +72,22 @@ const getTsunamis = async (req, res) => {
     ) {
       query.where = {
         id: {
-          equals: req.query.id || undefined,
+          equals: Number(req.query.id) || undefined,
         },
         region: {
           equals: req.query.region || undefined,
         },
         date: {
-          equals: req.query.date || undefined,
+          equals: Date(req.query.date) || undefined,
         },
         size: {
-          equals: req.query.size || undefined,
+          equals: Number(req.query.size) || undefined,
         },
         duration: {
-          equals: req.query.duration || undefined,
+          equals: Number(req.query.duration) || undefined,
         },
         earthquake_id: {
-          equals: res.query.earthquake_id || undefined,
+          equals: Number(res.query.earthquake_id) || undefined,
         },
       };
     }
