@@ -14,6 +14,7 @@ Rest API using Express and node.js. Earthquake early warning API used to access 
 - [Debugging](#debugging)
 - [How to format code](#how-to-format-code)
 - [API table ERD](#api-table-erd)
+- [Use of AI](#use-of-ai)
 
 ## API Link
 (Note if link hasnt been used for a while, requests may be slow)
@@ -89,3 +90,9 @@ npx prisma studio
 
 ## API table ERD
 ![ERD](https://github.com/otago-polytechnic-bit-courses/s1-24-intro-app-dev-mahoneybj/assets/65274137/158f93e5-1acc-4dc8-9ca2-ebeec13af113)
+
+## Use of AI
+I used AI such as chatgpt for time consuming tasks such as converting one table componant to work with another table etc. Only did this a couple of time
+until I relised that it was acually slowing me down as it was just causing more bugs that I would have to spend time to correct.
+Example promts used:
+"Can you change this (Table code for earthquake) to work with this table (building table)"
