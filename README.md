@@ -8,6 +8,7 @@ Rest API using Express and node.js. Earthquake early warning API used to access 
 - [Documentation](#documentation)
 - [Set up after cloning repo](#set-up-after-cloning-repo)
 - [Running database locally](#running-database-locally)
+- [Running web app locally](#running-web-app-locally)
 - [Seeding the Database](#seeding-the-database)
 - [Running Chai and Mocha tests](#running-chai-and-mocha-tests)
 - [API table ERD](#api-table-erd)
@@ -57,14 +58,12 @@ npm run dev -- --open
 (Note that when you run the automated tests, the database will automatically be seeded) 
 To seed data into your database tables, use the following command:
 ```bash
-npm install
 npx prisma db seed
 ```
 
 ## Running Chai and Mocha tests
 To run automated tests, use the following commands in order:
 ```bash
-npm install
 npm install joi
 npm install chai@4.3.9 chai-http mocha --save-dev
 npm test
