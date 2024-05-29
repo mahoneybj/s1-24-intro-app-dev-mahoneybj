@@ -6,6 +6,8 @@ Rest API using Express and node.js. Earthquake early warning API used to access 
 ## Table of Contents
 - [API Link](#api-link)
 - [Documentation](#documentation)
+- [Apply prisma migrations](#apply-prisma-migrations)
+- [Running database locally](#running-database-locally)
 - [Seeding the Database](#seeding-the-database)
 - [Running Chai and Mocha tests](#running-chai-and-mocha-tests)
 - [API table ERD](#api-table-erd)
@@ -20,6 +22,26 @@ https://s1-24-intro-app-dev-mahoneybj.onrender.com
 Link to postman route testing documentation
 ```
 https://documenter.getpostman.com/view/33350013/2sA3QtcW1P
+```
+## Apply prisma migrations
+Script to apply prisma migrations
+```
+
+```
+
+## Running database locally
+How to run database locally
+```
+npm install
+npm run dev
+```
+
+## Running web app
+How to run the web app locally
+```
+cd eew-frontend-react/
+npm install
+npm run dev -- --open
 ```
 
 ## Seeding the Database
