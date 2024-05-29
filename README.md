@@ -13,7 +13,7 @@ Rest API using Express and node.js. Earthquake early warning API used to access 
 - [Running web app locally](#running-web-app-locally)
 - [Seeding the Database](#seeding-the-database)
 - [Running Chai and Mocha tests](#running-chai-and-mocha-tests)
-- [Debugging](#debugging)
+- [Debugging and resetting database](#debugging-and-resetting-database)
 - [How to format code](#how-to-format-code)
 - [API table ERD](#api-table-erd)
 - [Use of AI](#use-of-ai)
@@ -92,7 +92,7 @@ npm install chai@4.3.9 chai-http mocha --save-dev
 npm test
 ```
 
-## Debugging
+## Debugging and resetting database
 
 Some debugging steps when things arn't working as it should
 This command resets the database
