@@ -6,7 +6,7 @@ Rest API using Express and node.js. Earthquake early warning API used to access 
 ## Table of Contents
 - [API Link](#api-link)
 - [Documentation](#documentation)
-- [Apply prisma migrations](#apply-prisma-migrations)
+- [Set up after cloning repo](#set-up-after-cloning-repo)
 - [Running database locally](#running-database-locally)
 - [Seeding the Database](#seeding-the-database)
 - [Running Chai and Mocha tests](#running-chai-and-mocha-tests)
@@ -23,16 +23,25 @@ Link to postman route testing documentation
 ```
 https://documenter.getpostman.com/view/33350013/2sA3QtcW1P
 ```
-## Apply prisma migrations
-Script to apply prisma migrations
-```
 
+## Set up after cloning repo
+Lists of scripts to run after cloning repo
+```
+npm install
+```
+Copy .env.example, change file name to .env
+Enter database external connection link to .env
+```
+DATABASE_URL=ADD DATABASE LINK HERE
+```
+Apply prisma migrations
+```
+npx prisma migrate dev
 ```
 
 ## Running database locally
 How to run database locally
 ```
-npm install
 npm run dev
 ```
 
