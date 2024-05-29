@@ -65,14 +65,14 @@ const getEarthquakes = async (req, res) => {
     };
 
     if (
-      req.query.id ||
-      req.query.date ||
-      req.query.magnitude ||
-      req.query.depth ||
-      req.query.duration ||
-      req.query.intensity ||
+      Number(req.query.id) ||
+      Date(req.query.date) ||
+      Number(req.query.magnitude) ||
+      Number(req.query.depth) ||
+      Number(req.query.duration) ||
+      Number(req.query.intensity) ||
       req.query.fault_line ||
-      req.query.after_shock_id
+      Number(req.query.after_shock_id)
     ) {
       query.where = {
         id: {

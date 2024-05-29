@@ -63,12 +63,12 @@ const getLandslides = async (req, res) => {
     };
 
     if (
-      req.query.id ||
-      req.query.smallest ||
-      req.query.largest ||
+      Number(req.query.id) ||
+      Number(req.query.smallest) ||
+      Number(req.query.largest) ||
       req.query.region ||
-      req.query.number ||
-      req.query.earthquake_id
+      Number(req.query.number) ||
+      Number(req.query.earthquake_id)
     ) {
       query.where = {
         id: {
