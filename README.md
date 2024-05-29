@@ -108,6 +108,7 @@ npx prisma studio
 ```
 
 ## How to format code
+
 ```
 npm run format
 ```

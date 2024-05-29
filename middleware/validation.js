@@ -108,10 +108,11 @@ const validatePostBuilding = async (req, res, next) => {
       where: { id: req.body.earthquake_id },
     });
     if (!earthquake) {
-      return res.status(400).json({ msg: "earthquake by that id does not exist" });
+      return res
+        .status(400)
+        .json({ msg: "earthquake by that id does not exist" });
     }
-  } catch (err) {
-  }
+  } catch (err) {}
 
   next();
 };
@@ -156,10 +157,11 @@ const validatePostTsunami = async (req, res, next) => {
       where: { id: req.body.earthquake_id },
     });
     if (!earthquake) {
-      return res.status(400).json({ msg: "earthquake by that id does not exist" });
+      return res
+        .status(400)
+        .json({ msg: "earthquake by that id does not exist" });
     }
-  } catch (err) {
-  }
+  } catch (err) {}
 
   next();
 };
@@ -263,10 +265,11 @@ const validatePostLandslide = async (req, res, next) => {
       where: { id: req.body.earthquake_id },
     });
     if (!earthquake) {
-      return res.status(400).json({ msg: "earthquake by that id does not exist" });
+      return res
+        .status(400)
+        .json({ msg: "earthquake by that id does not exist" });
     }
-  } catch (err) {
-  }
+  } catch (err) {}
 
   next();
 };
@@ -314,10 +317,11 @@ const validatePostSensorInfo = async (req, res, next) => {
       where: { id: req.body.earthquake_id },
     });
     if (!earthquake) {
-      return res.status(400).json({ msg: "earthquake by that id does not exist" });
+      return res
+        .status(400)
+        .json({ msg: "earthquake by that id does not exist" });
     }
-  } catch (err) {
-  }
+  } catch (err) {}
 
   next();
 };
