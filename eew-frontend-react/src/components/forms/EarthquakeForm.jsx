@@ -91,6 +91,7 @@ const EarthquakeForm = ({ onFormSubmit }) => {
           ...prevErrors, // Keep the other errors
           [field]: errorMsg, // Set the error for the field
         }));
+        alert(errorMsg);
       } else {
         console.log(err);
       }

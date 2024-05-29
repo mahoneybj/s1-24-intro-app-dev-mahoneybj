@@ -75,6 +75,7 @@ const TsunamiForm = ({ onFormSubmit }) => {
           ...prevErrors,
           [field]: errorMsg,
         }));
+        alert(errorMsg);
       } else {
         console.log(err);
       }

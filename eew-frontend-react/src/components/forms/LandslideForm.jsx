@@ -75,6 +75,7 @@ const LandslideForm = ({ onFormSubmit }) => {
           ...prevErrors,
           [field]: errorMsg,
         }));
+        alert(errorMsg);
       } else {
         console.log(err);
       }
