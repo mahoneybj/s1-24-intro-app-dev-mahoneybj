@@ -105,6 +105,7 @@ const EarthquakeEarlyWarningInfoTable = () => {
           ...errors,
           [field]: errorMsg,
         });
+        alert(errorMsg);
       } else {
         console.log(err);
       }
