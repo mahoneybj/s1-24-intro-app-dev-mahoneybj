@@ -72,22 +72,22 @@ const getLandslides = async (req, res) => {
     ) {
       query.where = {
         id: {
-          equals: req.query.id || undefined,
+          equals: Number(req.query.id) || undefined,
         },
         smallest: {
-          equals: req.query.smallest || undefined,
+          equals: Number(req.query.smallest) || undefined,
         },
         largest: {
-          equals: req.query.largest || undefined,
+          equals: Number(req.query.largest) || undefined,
         },
         region: {
           equals: req.query.region || undefined,
         },
         number: {
-          equals: req.query.number || undefined,
+          equals: Number(req.query.number) || undefined,
         },
         earthquake_id: {
-          equals: req.query.earthquake_id || undefined,
+          equals: Number(req.query.earthquake_id) || undefined,
         },
       };
     }
