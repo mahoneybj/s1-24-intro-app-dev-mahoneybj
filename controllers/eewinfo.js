@@ -74,25 +74,25 @@ const getEEWInfos = async (req, res) => {
     ) {
       query.where = {
         id: {
-          equals: req.query.id || undefined,
+          equals: Number(req.query.id) || undefined,
         },
         alert_triggered: {
-          equals: req.query.alert_triggered || undefined,
+          equals: Boolean(req.query.alert_triggered) || undefined,
         },
         date: {
-          equals: req.query.date || undefined,
+          equals: Date(req.query.date) || undefined,
         },
         region: {
           equals: req.query.region || undefined,
         },
         duration: {
-          equals: req.query.duration || undefined,
+          equals: Number(req.query.duration) || undefined,
         },
         accuracy: {
-          equals: req.query.accuracy || undefined,
+          equals: Number(req.query.accuracy) || undefined,
         },
         earthquake_id: {
-          equals: req.query.earthquake_id || undefined,
+          equals: Number(req.query.earthquake_id) || undefined,
         },
       };
     }
